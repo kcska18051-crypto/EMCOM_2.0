@@ -164,3 +164,23 @@ test("production banner keeps its desktop height over the shared media placehold
   assert.match(css, /\.production-banner\.media-placeholder\s*\{[^}]*min-height:\s*520px/s);
   assert.match(css, /@media \(max-width: 560px\)[\s\S]*\.production-banner\.media-placeholder\s*\{[^}]*min-height:\s*480px/s);
 });
+
+test("approved six-card work stages mosaic follows the production banner", () => {
+  const html = read("index.html");
+  const productionPosition = html.indexOf('class="production-banner media-placeholder"');
+  const stagesPosition = html.indexOf('class="work-stages"');
+
+  assert.ok(productionPosition < stagesPosition, "work stages must follow the production banner");
+  assert.match(html, /<h2 id="work-stages-title">Этапы работы<\/h2>/);
+  assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
+  assert.equal((html.match(/data-work-stage(?=[\s>])/g) ?? []).length, 6);
+  assertInOrder(html, [
+    "Этап 1: Получаем техническое задание и уточняем исходные данные.",
+    "Этап 2: Разрабатываем техническую концепцию и готовим коммерческое предложение.",
+    "Этап 3: Выполняем проектирование.",
+    "Этап 4: Производим и комплектуем объект и проводим заводские испытания.",
+    "Этап 5: Доставляем оборудование.",
+    "Этап 6: Выполняем монтаж и ПНР и Передаём объект заказчику.",
+  ]);
+  assert.doesNotMatch(html, /Этап 10/);
+});
