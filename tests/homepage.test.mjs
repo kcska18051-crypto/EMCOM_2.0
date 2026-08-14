@@ -120,7 +120,8 @@ test("approved about-company block follows the services", () => {
   assert.ok(lastServicePosition < aboutPosition, "about-company block must follow services");
   assert.match(html, /Почему выбирают ЭМКОМ\?/);
   assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
-  assert.equal((html.match(/data-about-feature/g) ?? []).length, 5);
+  assert.equal((html.match(/data-about-feature(?=[\s>])/g) ?? []).length, 5);
+  assert.equal((html.match(/data-about-feature-icon/g) ?? []).length, 5);
   assertInOrder(html, [
     "Полный цикл работ",
     "Собственное производство",

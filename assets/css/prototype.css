@@ -366,10 +366,26 @@ a:focus-visible {
   gap: 0 44px;
 }
 
-.about-company-features p {
+.about-company-feature {
+  display: grid;
   margin: 0;
   padding: 18px 0;
   border-top: 1px solid var(--color-border);
+  grid-template-columns: 46px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.about-feature-icon {
+  display: block;
+  width: 46px;
+  height: 46px;
+  background: var(--color-placeholder);
+  border-radius: 50%;
+}
+
+.about-company-feature p {
+  margin: 0;
   font-size: 15px;
   font-weight: 600;
   line-height: 1.4;
