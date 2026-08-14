@@ -777,6 +777,10 @@ a:focus-visible {
   color: var(--color-text);
 }
 
+.company-mobile-switch {
+  display: none;
+}
+
 .company-layout {
   display: grid;
   padding-bottom: 96px;
@@ -1051,6 +1055,15 @@ a:focus-visible {
 
   .company-heading {
     padding: 42px 0 32px;
+  }
+
+  .company-mobile-switch {
+    display: inline-flex;
+    margin-top: 22px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .company-layout {
