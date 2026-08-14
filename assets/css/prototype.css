@@ -332,6 +332,56 @@ a:focus-visible {
   line-height: 1.35;
 }
 
+.about-company {
+  width: min(calc(100% - 80px), var(--container));
+  margin-inline: auto;
+  padding: 84px 0 96px;
+  border-top: 1px solid var(--color-border);
+}
+
+.about-company-top {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.65fr);
+  gap: 72px;
+}
+
+.about-company-heading h2 {
+  margin: 0;
+  font-size: clamp(34px, 3.8vw, 48px);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.about-company-intro {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.about-company-features {
+  display: grid;
+  margin-top: 34px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 44px;
+}
+
+.about-company-features p {
+  margin: 0;
+  padding: 18px 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.about-media {
+  width: 100%;
+  min-height: 0;
+  margin-top: 52px;
+  aspect-ratio: 16 / 5;
+}
+
 .wireframe-block {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -399,12 +449,22 @@ a:focus-visible {
   }
 
   .brief-cta-content,
-  .services {
+  .services,
+  .about-company {
     width: calc(100% - 48px);
   }
 
   .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-company-top {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .about-media {
+    aspect-ratio: 16 / 7;
   }
 }
 
@@ -491,6 +551,11 @@ a:focus-visible {
     padding: 58px 0 68px;
   }
 
+  .about-company {
+    width: calc(100% - 40px);
+    padding: 58px 0 68px;
+  }
+
   .services-heading {
     margin-bottom: 30px;
   }
@@ -507,6 +572,20 @@ a:focus-visible {
   .service-card {
     aspect-ratio: 4 / 3;
     padding: 22px;
+  }
+
+  .about-company-heading h2 {
+    font-size: 34px;
+  }
+
+  .about-company-features {
+    margin-top: 26px;
+    grid-template-columns: 1fr;
+  }
+
+  .about-media {
+    margin-top: 36px;
+    aspect-ratio: 4 / 3;
   }
 
   .feature {
