@@ -7,39 +7,46 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/prototype.css?v=20260814-10">
+  <link rel="stylesheet" href="assets/css/prototype.css?v=20260814-11">
 </head>
 <body>
   <div class="site-shell">
     <header class="site-header">
-      <div class="header-top">
+      <div class="header-bar">
+        <button class="mobile-menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav" data-mobile-menu-toggle>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
         <a class="brand" href="index.html" aria-label="ЭМКОМ — главная">
           <img src="assets/images/emcom-logo.png" alt="ЭМКОМ">
         </a>
-      </div>
 
-      <nav class="site-nav" aria-label="Основная навигация">
-        <ul class="nav-list">
-          <li class="nav-item nav-item--dropdown">
-            <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="about-menu" data-about-toggle>
-              О компании
-            </button>
-            <ul class="about-menu" id="about-menu" data-about-menu hidden>
-              <li><a href="#">О компании</a></li>
-              <li><a href="#">История компании</a></li>
-              <li><a href="#">Партнёры</a></li>
-              <li><a href="#">Сертификаты/лицензии</a></li>
-              <li><a href="#">Реквизиты</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#">Решения</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Услуги</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Кейсы</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Производство</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">База знаний</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
-        </ul>
-      </nav>
+        <nav class="site-nav" id="main-nav" aria-label="Основная навигация" aria-hidden="false" data-mobile-menu>
+          <ul class="nav-list">
+            <li class="nav-item nav-item--dropdown">
+              <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="about-menu" data-about-toggle>
+                О компании
+              </button>
+              <ul class="about-menu" id="about-menu" data-about-menu hidden>
+                <li><a href="#">О компании</a></li>
+                <li><a href="#">История компании</a></li>
+                <li><a href="#">Партнёры</a></li>
+                <li><a href="#">Сертификаты/лицензии</a></li>
+                <li><a href="#">Реквизиты</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Решения</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Услуги</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Кейсы</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Производство</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">База знаний</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
+            <li class="nav-item nav-item--cta"><a class="nav-cta" href="#feedback-title">Форма обратной связи</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main class="homepage">
@@ -260,6 +267,6 @@
     </main>
     <footer class="site-footer-placeholder" aria-label="Место для подвала сайта"></footer>
   </div>
-  <script type="module" src="assets/js/header.js?v=20260814-2"></script>
+  <script type="module" src="assets/js/header.js?v=20260814-3"></script>
 </body>
 </html>
