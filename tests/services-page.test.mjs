@@ -28,7 +28,8 @@ test("services page contains approved sidebar and cards", () => {
     assert.equal((html.match(new RegExp(name, "g")) ?? []).length, 2, `${name} must appear in sidebar and card`);
   }
   assert.match(html, /Lorem ipsum dolor sit amet/);
-  assert.doesNotMatch(html, /<a(?:\s|>)[^>]*data-services-(?:side-item|card)/);
+  assert.equal((html.match(/<a class="services-page-card" data-services-card/g) ?? []).length, 1);
+  assert.doesNotMatch(html, /<a(?:\s|>)[^>]*data-services-side-item/);
 });
 
 test("all completed headers link to services", () => {
@@ -49,7 +50,7 @@ test("services page follows approved responsive grid", () => {
   const html = read("services/index.html");
   const css = read("assets/css/prototype.css");
 
-  assert.match(html, /prototype\.css\?v=20260814-18/);
+  assert.match(html, /prototype\.css\?v=20260814-19/);
   assert.match(css, /\.services-page-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 1200px\) and \(min-width: 901px\)[\s\S]*\.services-page-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.services-page-sidebar\s*\{[^}]*display:\s*none/s);
