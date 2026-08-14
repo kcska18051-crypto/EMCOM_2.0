@@ -110,3 +110,23 @@ test("approved CTA banner and eight service cards follow the feature block", () 
     "Нестандартное модульное решение",
   ]);
 });
+
+test("approved about-company block follows the services", () => {
+  const html = read("index.html");
+  const lastServicePosition = html.lastIndexOf("data-service-card");
+  const aboutPosition = html.indexOf('class="about-company"');
+  const mediaPosition = html.indexOf('class="about-media media-placeholder"');
+
+  assert.ok(lastServicePosition < aboutPosition, "about-company block must follow services");
+  assert.match(html, /Почему выбирают ЭМКОМ\?/);
+  assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
+  assert.equal((html.match(/data-about-feature/g) ?? []).length, 5);
+  assertInOrder(html, [
+    "Полный цикл работ",
+    "Собственное производство",
+    "Заводская готовность",
+    "Опыт сложных проектов",
+    "Работа в сложных условиях",
+  ]);
+  assert.ok(html.lastIndexOf("data-about-feature") < mediaPosition, "image placeholder must follow about features");
+});
