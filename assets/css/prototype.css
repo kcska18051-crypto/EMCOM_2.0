@@ -992,6 +992,65 @@ a:focus-visible {
   margin-top: 48px;
 }
 
+.licenses-section + .licenses-section {
+  margin-top: 54px;
+}
+
+.licenses-section > h2 {
+  margin: 0 0 14px;
+  font-size: clamp(26px, 2.4vw, 34px);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.licenses-section > p {
+  margin: 0 0 28px;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.license-list {
+  border-top: 1px solid var(--color-border);
+}
+
+.license-card {
+  display: grid;
+  min-width: 0;
+  padding: 30px 36px;
+  border: 1px solid var(--color-border);
+  border-top: 0;
+  background: var(--color-surface);
+  grid-template-columns: 160px minmax(0, 1fr);
+  align-items: center;
+  gap: 36px;
+}
+
+.license-document-placeholder {
+  display: block;
+  width: 144px;
+  max-width: 100%;
+  aspect-ratio: 144 / 200;
+  background: var(--color-placeholder);
+}
+
+.license-card-copy {
+  min-width: 0;
+}
+
+.license-card-copy h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.license-card-copy p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 .site-footer-placeholder {
   width: 100%;
   min-height: 360px;
@@ -1185,6 +1244,20 @@ a:focus-visible {
 
   .partner-card {
     min-height: 192px;
+  }
+
+  .licenses-section + .licenses-section {
+    margin-top: 42px;
+  }
+
+  .license-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 36px;
+  }
+
+  .license-document-placeholder {
+    width: 144px;
   }
 
   .nav-list {
