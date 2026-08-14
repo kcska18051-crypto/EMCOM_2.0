@@ -24,9 +24,18 @@ test("company page reuses the shared responsive shell", () => {
 
   const html = read("company/index.html");
   const css = read("assets/css/prototype.css");
-  assert.match(html, /href="\.\.\/assets\/css\/prototype\.css\?v=20260814-14"/);
+  assert.match(html, /href="\.\.\/assets\/css\/prototype\.css\?v=20260814-15"/);
   assert.match(html, /src="\.\.\/assets\/images\/emcom-logo\.png"/);
   assert.match(html, /src="\.\.\/assets\/js\/header\.js\?v=20260814-3"/);
   assert.match(css, /\.company-layout\s*\{[^}]*grid-template-columns:\s*280px minmax\(0, 1fr\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.company-sidebar\s*\{[^}]*display:\s*none/s);
+});
+
+test("company page keeps the history transition available on mobile", () => {
+  const html = read("company/index.html");
+  const css = read("assets/css/prototype.css");
+
+  assert.match(html, /<a class="company-mobile-switch" href="history\/">История компании<\/a>/);
+  assert.match(css, /\.company-mobile-switch\s*\{[^}]*display:\s*none/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.company-mobile-switch\s*\{[^}]*display:\s*inline-flex/s);
 });
