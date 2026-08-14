@@ -10,25 +10,31 @@ test("foundation files exist", () => {
   assert.equal(existsSync(new URL("../.nojekyll", import.meta.url)), true);
 });
 
-test("index is a Russian semantic page with an empty registry", () => {
+test("index is a Russian semantic homepage", () => {
   const html = read("index.html");
   assert.match(html, /<html lang="ru">/);
   assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1">/);
   assert.match(html, /<title>ЭМКОМ_2\.0 — прототип<\/title>/);
   assert.match(html, /href="assets\/css\/prototype\.css"/);
-  assert.match(html, /<main[^>]*class="page-registry"/);
-  assert.match(html, /Страницы будут добавлены после согласования/);
+  assert.match(html, /<main[^>]*class="homepage"/);
+  assert.doesNotMatch(html, /Страницы будут добавлены после согласования/);
 });
 
 test("shared stylesheet exposes approved wireframe primitives", () => {
   const css = read("assets/css/prototype.css");
   for (const selector of [
     ".site-shell",
-    ".page-registry",
-    ".empty-state",
+    ".homepage",
+    ".hero",
+    ".features",
     ".wireframe-block",
     ".media-placeholder",
   ]) {
     assert.equal(css.includes(selector), true, `missing ${selector}`);
   }
+});
+
+test("package declares ES module semantics", () => {
+  const packageJson = JSON.parse(read("package.json"));
+  assert.equal(packageJson.type, "module");
 });
