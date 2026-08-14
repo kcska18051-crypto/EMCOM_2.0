@@ -106,6 +106,18 @@ test("approved single-row desktop header and mobile navigation are present", () 
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.site-nav\.is-open\s*\{[^}]*display:\s*block/s);
 });
 
+test("mobile company navigation is a direct link without a nested list", () => {
+  const html = read("index.html");
+  const css = read("assets/css/prototype.css");
+
+  assert.match(html, /class="nav-link nav-link--mobile" href="company\/">О компании<\/a>/);
+  assert.match(html, /class="nav-link nav-toggle nav-toggle--desktop"/);
+  assert.match(css, /\.nav-link--mobile\s*\{[^}]*display:\s*none/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.nav-link--mobile\s*\{[^}]*display:\s*flex/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.nav-toggle--desktop[^}]*display:\s*none/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.nav-item--dropdown \.about-menu[^}]*display:\s*none/s);
+});
+
 test("desktop header keeps the menu beside the logo while the burger stays mobile-only", () => {
   const css = read("assets/css/prototype.css");
   const desktopCss = css.split("@media (max-width: 900px)")[0];
