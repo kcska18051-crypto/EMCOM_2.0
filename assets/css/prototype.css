@@ -94,6 +94,10 @@ a:focus-visible {
   display: none;
 }
 
+.nav-link--mobile {
+  display: none;
+}
+
 .nav-list,
 .about-menu {
   margin: 0;
@@ -814,6 +818,15 @@ a:focus-visible {
     width: 20px;
     height: 2px;
     background: #343434;
+  }
+
+  .nav-link--mobile {
+    display: flex;
+  }
+
+  .nav-toggle--desktop,
+  .nav-item--dropdown .about-menu {
+    display: none;
   }
 
   .site-nav {
