@@ -131,3 +131,18 @@ test("approved about-company block follows the services", () => {
   ]);
   assert.ok(html.lastIndexOf("data-about-feature") < mediaPosition, "image placeholder must follow about features");
 });
+
+test("approved cases block follows the complete about-company block", () => {
+  const html = read("index.html");
+  const aboutMediaPosition = html.indexOf('class="about-media media-placeholder"');
+  const casesPosition = html.indexOf('class="cases"');
+
+  assert.ok(aboutMediaPosition < casesPosition, "cases must follow the about-company media placeholder");
+  assert.match(html, /<h2 id="cases-title">Кейсы<\/h2>/);
+  assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
+  assert.equal((html.match(/data-case-card(?=[\s>])/g) ?? []).length, 3);
+  assertInOrder(html, ["Проект 1", "Проект 2", "Проект 3"]);
+  assert.match(html, /<span class="cases-all-control" aria-disabled="true">Все проекты<\/span>/);
+  assert.match(html, /<span class="cases-load-control" aria-disabled="true">Загрузить еще<\/span>/);
+  assert.doesNotMatch(html, /<button[^>]*class="cases-(?:all|load)-control"/);
+});

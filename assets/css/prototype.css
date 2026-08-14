@@ -398,6 +398,83 @@ a:focus-visible {
   aspect-ratio: 16 / 5;
 }
 
+.cases {
+  display: grid;
+  width: min(calc(100% - 80px), var(--container));
+  margin-inline: auto;
+  padding: 92px 0 100px;
+  border-top: 1px solid var(--color-border);
+  grid-template-columns: minmax(240px, 0.65fr) minmax(0, 1.75fr);
+  align-items: start;
+  gap: 76px;
+}
+
+.cases-copy h2,
+.case-card h3 {
+  margin: 0;
+}
+
+.cases-copy h2 {
+  font-size: clamp(34px, 3.8vw, 48px);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.cases-copy p {
+  margin: 22px 0 0;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.cases-all-control,
+.cases-load-control {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  border: 1px solid #969696;
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.cases-all-control {
+  margin-top: 28px;
+}
+
+.cases-list {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 22px;
+}
+
+.case-card {
+  display: flex;
+  min-width: 0;
+  aspect-ratio: 16 / 5;
+  align-items: flex-end;
+  padding: 26px 28px;
+  background: var(--color-placeholder);
+}
+
+.case-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cases-load-control {
+  min-height: 42px;
+  margin: 2px auto 0;
+  border-color: transparent;
+  color: var(--color-muted);
+}
+
 .wireframe-block {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -481,6 +558,20 @@ a:focus-visible {
 
   .about-media {
     aspect-ratio: 16 / 7;
+  }
+
+  .cases {
+    width: calc(100% - 48px);
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+
+  .cases-copy {
+    max-width: 720px;
+  }
+
+  .case-card {
+    aspect-ratio: 16 / 6;
   }
 }
 
@@ -602,6 +693,33 @@ a:focus-visible {
   .about-media {
     margin-top: 36px;
     aspect-ratio: 4 / 3;
+  }
+
+  .cases {
+    width: calc(100% - 40px);
+    padding: 58px 0 68px;
+    gap: 34px;
+  }
+
+  .cases-copy h2 {
+    font-size: 34px;
+  }
+
+  .cases-copy p {
+    margin-top: 18px;
+  }
+
+  .cases-list {
+    gap: 18px;
+  }
+
+  .case-card {
+    aspect-ratio: 16 / 9;
+    padding: 22px;
+  }
+
+  .cases-all-control {
+    width: 100%;
   }
 
   .feature {
