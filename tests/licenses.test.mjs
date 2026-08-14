@@ -49,3 +49,13 @@ test("completed company pages expose reciprocal licenses links", () => {
     assert.equal(mobileNavLinkCount(html), 4);
   }
 });
+
+test("license cards follow desktop and mobile composition", () => {
+  const html = read("company/licenses/index.html");
+  const css = read("assets/css/prototype.css");
+
+  assert.match(html, /href="\.\.\/\.\.\/assets\/css\/prototype\.css\?v=20260814-17"/);
+  assert.match(css, /\.license-card\s*\{[^}]*display:\s*grid[^}]*grid-template-columns:\s*160px minmax\(0, 1fr\)/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.license-card\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.license-document-placeholder\s*\{[^}]*width:\s*144px/s);
+});
