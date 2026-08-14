@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>История — ЭМКОМ_2.0</title>
+  <title>Партнёры — ЭМКОМ_2.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -32,8 +32,8 @@
               </button>
               <ul class="about-menu" id="about-menu" data-about-menu hidden>
                 <li><a href="../">О компании</a></li>
-                <li><a href="./">История компании</a></li>
-                <li><a href="../partners/">Партнёры</a></li>
+                <li><a href="../history/">История компании</a></li>
+                <li><a href="./">Партнёры</a></li>
                 <li><a href="#">Сертификаты/лицензии</a></li>
                 <li><a href="#">Реквизиты</a></li>
               </ul>
@@ -52,82 +52,58 @@
 
     <main class="company-page">
       <header class="company-heading">
-        <h1>История</h1>
+        <h1>Партнёры</h1>
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
           <a href="../../">Главная</a>
           <span aria-hidden="true">—</span>
-          <span>История</span>
+          <a href="../">О компании</a>
+          <span aria-hidden="true">—</span>
+          <span>Партнёры</span>
         </nav>
         <nav class="company-mobile-nav" aria-label="Подразделы компании">
           <a href="../">О компании</a>
-          <a href="./" aria-current="page">История компании</a>
-          <a href="../partners/">Партнёры</a>
+          <a href="../history/">История компании</a>
+          <a href="./" aria-current="page">Партнёры</a>
         </nav>
       </header>
 
       <div class="company-layout">
         <aside class="company-sidebar" aria-label="Разделы компании">
           <a href="../" data-company-side-item>О компании</a>
-          <a class="is-current" href="./" aria-current="page" data-company-side-item>История компании</a>
-          <a href="../partners/" data-company-side-item>Партнёры</a>
+          <a href="../history/" data-company-side-item>История компании</a>
+          <a class="is-current" href="./" aria-current="page" data-company-side-item>Партнёры</a>
           <span data-company-side-item>Сертификаты/лицензии</span>
           <span data-company-side-item>Реквизиты</span>
         </aside>
 
-        <article class="company-content history-content">
-          <header class="history-intro">
+        <article class="company-content partners-content">
+          <section class="partners-intro">
             <h2>Lorem ipsum dolor sit amet</h2>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-          </header>
+            <p>Aenean commodo ligula eget dolor.</p>
+            <ul>
+              <li>Cum sociis natoque penatibus et magnis dis parturient montes.</li>
+              <li>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</li>
+              <li>Nulla consequat massa quis enim.</li>
+            </ul>
+          </section>
 
-          <div class="history-list">
-            <section class="history-item history-item--with-image" data-history-item>
-              <div class="history-date">
-                <strong>2009</strong>
-                <span>Октябрь — декабрь</span>
-              </div>
-              <div class="history-copy">
-                <h2>Lorem ipsum dolor sit amet</h2>
-                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-              </div>
-              <div class="history-image media-placeholder" role="img" aria-label="Изображение этапа 2009 года" data-history-image></div>
-            </section>
+          <div class="partner-grid" data-partner-group>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Lorem ipsum</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Dolor sit amet</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Consectetuer adipiscing</p></article>
+          </div>
 
-            <section class="history-item" data-history-item>
-              <div class="history-date">
-                <strong>2012</strong>
-                <span>Июль</span>
-              </div>
-              <div class="history-copy">
-                <h2>Lorem ipsum dolor sit amet</h2>
-                <p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-              </div>
-            </section>
+          <h2 class="partners-group-title">Aenean vulputate eleifend tellus</h2>
 
-            <section class="history-item history-item--with-image" data-history-item>
-              <div class="history-date">
-                <strong>2015</strong>
-              </div>
-              <div class="history-copy">
-                <h2>Lorem ipsum dolor sit amet</h2>
-                <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
-                <p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-              </div>
-              <div class="history-image media-placeholder" role="img" aria-label="Изображение этапа 2015 года" data-history-image></div>
-            </section>
-
-            <section class="history-item" data-history-item>
-              <div class="history-date">
-                <strong>2020</strong>
-              </div>
-              <div class="history-copy">
-                <h2>Lorem ipsum dolor sit amet</h2>
-                <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
-                <p>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</p>
-              </div>
-            </section>
+          <div class="partner-grid" data-partner-group>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Aenean commodo</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Ligula eget dolor</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Aenean massa</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Cum sociis natoque</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Penatibus et magnis</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Dis parturient montes</p></article>
+            <article class="partner-card" data-partner-card><span class="partner-logo-placeholder" data-partner-logo aria-hidden="true"></span><p>Nascetur ridiculus</p></article>
           </div>
         </article>
       </div>

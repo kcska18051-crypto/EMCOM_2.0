@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/prototype.css?v=20260814-15">
+  <link rel="stylesheet" href="../assets/css/prototype.css?v=20260814-16">
 </head>
 <body>
   <div class="site-shell">
@@ -33,7 +33,7 @@
               <ul class="about-menu" id="about-menu" data-about-menu hidden>
                 <li><a href="./">О компании</a></li>
                 <li><a href="history/">История компании</a></li>
-                <li><a href="#">Партнёры</a></li>
+                <li><a href="partners/">Партнёры</a></li>
                 <li><a href="#">Сертификаты/лицензии</a></li>
                 <li><a href="#">Реквизиты</a></li>
               </ul>
@@ -58,14 +58,18 @@
           <span aria-hidden="true">—</span>
           <span>О компании</span>
         </nav>
-        <a class="company-mobile-switch" href="history/">История компании</a>
+        <nav class="company-mobile-nav" aria-label="Подразделы компании">
+          <a href="./" aria-current="page">О компании</a>
+          <a href="history/">История компании</a>
+          <a href="partners/">Партнёры</a>
+        </nav>
       </header>
 
       <div class="company-layout">
         <aside class="company-sidebar" aria-label="Разделы компании">
           <a class="is-current" href="./" aria-current="page" data-company-side-item>О компании</a>
           <a href="history/" data-company-side-item>История компании</a>
-          <span data-company-side-item>Партнёры</span>
+          <a href="partners/" data-company-side-item>Партнёры</a>
           <span data-company-side-item>Сертификаты/лицензии</span>
           <span data-company-side-item>Реквизиты</span>
         </aside>
