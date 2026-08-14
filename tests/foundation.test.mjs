@@ -14,10 +14,10 @@ test("index is a Russian semantic page with an empty registry", () => {
   const html = read("index.html");
   assert.match(html, /<html lang="ru">/);
   assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1">/);
-  assert.match(html, /<title>?????_2\.0 ? ????????<\/title>/);
+  assert.match(html, /<title>ЭМКОМ_2\.0 — прототип<\/title>/);
   assert.match(html, /href="assets\/css\/prototype\.css"/);
   assert.match(html, /<main[^>]*class="page-registry"/);
-  assert.match(html, /???????? ????? ????????? ????? ????????????/);
+  assert.match(html, /Страницы будут добавлены после согласования/);
 });
 
 test("shared stylesheet exposes approved wireframe primitives", () => {
