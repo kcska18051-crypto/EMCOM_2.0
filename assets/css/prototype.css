@@ -475,6 +475,50 @@ a:focus-visible {
   color: var(--color-muted);
 }
 
+.production-banner.media-placeholder {
+  display: flex;
+  width: min(calc(100% - 16px), 1600px);
+  min-height: 520px;
+  margin-inline: auto;
+  align-items: center;
+}
+
+.production-banner-content {
+  width: min(calc(100% - 80px), var(--container));
+  margin-inline: auto;
+  padding: 76px 0;
+}
+
+.production-banner-content h2 {
+  max-width: 720px;
+  margin: 0;
+  font-size: clamp(38px, 4.2vw, 58px);
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+}
+
+.production-banner-content p {
+  max-width: 650px;
+  margin: 24px 0 0;
+  color: #4f4f4f;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.production-banner-control {
+  display: inline-flex;
+  min-height: 50px;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 26px;
+  background: #343434;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  user-select: none;
+}
+
 .wireframe-block {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -572,6 +616,15 @@ a:focus-visible {
 
   .case-card {
     aspect-ratio: 16 / 6;
+  }
+
+  .production-banner.media-placeholder {
+    width: calc(100% - 12px);
+    min-height: 500px;
+  }
+
+  .production-banner-content {
+    width: calc(100% - 48px);
   }
 }
 
@@ -719,6 +772,29 @@ a:focus-visible {
   }
 
   .cases-all-control {
+    width: 100%;
+  }
+
+  .production-banner.media-placeholder {
+    min-height: 480px;
+  }
+
+  .production-banner-content {
+    width: calc(100% - 40px);
+    padding: 58px 0;
+  }
+
+  .production-banner-content h2 {
+    font-size: 34px;
+  }
+
+  .production-banner-content p {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .production-banner-control {
     width: 100%;
   }
 

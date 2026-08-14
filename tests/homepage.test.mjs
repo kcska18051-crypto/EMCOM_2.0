@@ -146,3 +146,21 @@ test("approved cases block follows the complete about-company block", () => {
   assert.match(html, /<span class="cases-load-control" aria-disabled="true">Загрузить еще<\/span>/);
   assert.doesNotMatch(html, /<button[^>]*class="cases-(?:all|load)-control"/);
 });
+
+test("approved production banner follows the complete cases block", () => {
+  const html = read("index.html");
+  const loadControlPosition = html.indexOf('class="cases-load-control"');
+  const bannerPosition = html.indexOf('class="production-banner media-placeholder"');
+
+  assert.ok(loadControlPosition < bannerPosition, "production banner must follow the cases load control");
+  assert.match(html, /<h2 id="production-banner-title">Производственные мощности<\/h2>/);
+  assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
+  assert.match(html, /<span class="production-banner-control" aria-disabled="true">Подробнее<\/span>/);
+  assert.doesNotMatch(html, /<button[^>]*class="production-banner-control"/);
+});
+
+test("production banner keeps its desktop height over the shared media placeholder rule", () => {
+  const css = read("assets/css/prototype.css");
+  assert.match(css, /\.production-banner\.media-placeholder\s*\{[^}]*min-height:\s*520px/s);
+  assert.match(css, /@media \(max-width: 560px\)[\s\S]*\.production-banner\.media-placeholder\s*\{[^}]*min-height:\s*480px/s);
+});
