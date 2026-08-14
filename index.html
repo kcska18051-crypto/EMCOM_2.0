@@ -4,18 +4,84 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ЭМКОМ_2.0 — прототип</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/prototype.css">
 </head>
 <body>
   <div class="site-shell">
-    <header class="project-header">
-      <p class="eyebrow">Кликабельный прототип</p>
-      <h1>ЭМКОМ_2.0</h1>
+    <header class="site-header">
+      <div class="header-top">
+        <a class="brand" href="index.html" aria-label="ЭМКОМ — главная">
+          <img src="assets/images/emcom-logo.png" alt="ЭМКОМ">
+        </a>
+      </div>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="nav-list">
+          <li class="nav-item nav-item--dropdown">
+            <button class="nav-link nav-toggle" type="button" aria-expanded="false" aria-controls="about-menu" data-about-toggle>
+              О компании
+            </button>
+            <ul class="about-menu" id="about-menu" data-about-menu hidden>
+              <li><a href="#">О компании</a></li>
+              <li><a href="#">История компании</a></li>
+              <li><a href="#">Партнёры</a></li>
+              <li><a href="#">Сертификаты/лицензии</a></li>
+              <li><a href="#">Реквизиты</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Решения</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Услуги</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Кейсы</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Производство</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">База знаний</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Контакты</a></li>
+        </ul>
+      </nav>
     </header>
-    <main class="page-registry" aria-labelledby="registry-title">
-      <h2 id="registry-title">Страницы</h2>
-      <p class="empty-state">Страницы будут добавлены после согласования.</p>
+
+    <main class="homepage">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="hero-eyebrow">инженерно-производственная компания полного цикла</p>
+          <h1 id="hero-title">Модульные инженерные решения под ключ</h1>
+          <div class="hero-copy">
+            <p>Проектируем и производим комплексные инженерные системы для энергетики, промышленности, инфраструктуры и связи.</p>
+            <p>От разработки технического решения до изготовления, поставки и ввода оборудования в эксплуатацию.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="features" aria-label="Фичеры">
+        <article class="feature" data-feature>
+          <span class="feature-icon" aria-hidden="true"></span>
+          <p>собственное производство</p>
+        </article>
+        <article class="feature" data-feature>
+          <span class="feature-icon" aria-hidden="true"></span>
+          <p>более 20 лет опыта</p>
+        </article>
+        <article class="feature" data-feature>
+          <span class="feature-icon" aria-hidden="true"></span>
+          <p>более 500 реализованных проектов</p>
+        </article>
+        <article class="feature" data-feature>
+          <span class="feature-icon" aria-hidden="true"></span>
+          <p>проектирование, производство, СМР и ПНР</p>
+        </article>
+        <article class="feature" data-feature>
+          <span class="feature-icon" aria-hidden="true"></span>
+          <p>работа по всей России</p>
+        </article>
+        <article class="feature" data-feature>
+          <span class="feature-icon" aria-hidden="true"></span>
+          <p>решения для сложных климатических условий</p>
+        </article>
+      </section>
     </main>
   </div>
+  <script type="module" src="assets/js/header.js"></script>
 </body>
 </html>
