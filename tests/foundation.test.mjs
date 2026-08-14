@@ -15,7 +15,7 @@ test("index is a Russian semantic homepage", () => {
   assert.match(html, /<html lang="ru">/);
   assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1">/);
   assert.match(html, /<title>ЭМКОМ_2\.0 — прототип<\/title>/);
-  assert.match(html, /href="assets\/css\/prototype\.css\?v=20260814-5"/);
+  assert.match(html, /href="assets\/css\/prototype\.css\?v=20260814-6"/);
   assert.match(html, /<main[^>]*class="homepage"/);
   assert.doesNotMatch(html, /Страницы будут добавлены после согласования/);
 });
