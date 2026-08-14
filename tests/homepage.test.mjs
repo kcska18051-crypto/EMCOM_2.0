@@ -19,7 +19,7 @@ test("homepage contains only the approved header, hero, and feature content", ()
 
   assert.match(html, /fonts\.googleapis\.com\/css2\?family=Montserrat/);
   assert.match(html, /src="assets\/images\/emcom-logo\.png"/);
-  assert.match(html, /src="assets\/js\/header\.js\?v=20260814-2"/);
+  assert.match(html, /src="assets\/js\/header\.js\?v=20260814-3"/);
   assert.match(html, /data-about-toggle/);
   assert.match(html, /data-about-menu/);
 
@@ -81,6 +81,54 @@ test("menu state helper synchronizes aria state and visibility", async () => {
   module.setMenuState(button, menu, false);
   assert.equal(attributes.get("aria-expanded"), "false");
   assert.equal(menu.hidden, true);
+});
+
+test("approved single-row desktop header and mobile navigation are present", () => {
+  const html = read("index.html");
+  const css = read("assets/css/prototype.css");
+
+  assert.match(html, /<div class="header-bar">/);
+  assert.match(html, /class="mobile-menu-toggle"[^>]*aria-controls="main-nav"[^>]*data-mobile-menu-toggle/);
+  assert.match(html, /<nav class="site-nav" id="main-nav"[^>]*data-mobile-menu/);
+  assert.match(html, /class="nav-cta" href="#feedback-title">Форма обратной связи<\/a>/);
+  assertInOrder(html, [
+    "О компании",
+    "Решения",
+    "Услуги",
+    "Кейсы",
+    "Производство",
+    "База знаний",
+    "Контакты",
+    "Форма обратной связи",
+  ]);
+  assert.match(css, /\.header-bar\s*\{[^}]*display:\s*flex/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.mobile-menu-toggle\s*\{[^}]*display:\s*flex/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.site-nav\.is-open\s*\{[^}]*display:\s*block/s);
+});
+
+test("mobile menu helper synchronizes expanded state and panel class", async () => {
+  const module = await import("../assets/js/header.js");
+  const attributes = new Map();
+  const classes = new Set();
+  const button = { setAttribute: (name, value) => attributes.set(name, value) };
+  const menu = {
+    setAttribute: (name, value) => attributes.set(`menu:${name}`, value),
+    classList: {
+      toggle(name, enabled) {
+        enabled ? classes.add(name) : classes.delete(name);
+      },
+    },
+  };
+
+  module.setMobileMenuState(button, menu, true);
+  assert.equal(attributes.get("aria-expanded"), "true");
+  assert.equal(attributes.get("menu:aria-hidden"), "false");
+  assert.equal(classes.has("is-open"), true);
+
+  module.setMobileMenuState(button, menu, false);
+  assert.equal(attributes.get("aria-expanded"), "false");
+  assert.equal(attributes.get("menu:aria-hidden"), "true");
+  assert.equal(classes.has("is-open"), false);
 });
 
 test("approved CTA banner and eight service cards follow the feature block", () => {
