@@ -216,3 +216,15 @@ test("approved feedback form follows the work stages", () => {
   assert.match(html, /class="feedback-submit"[^>]*aria-disabled="true"/);
   assert.match(html, /class="feedback-upload"[^>]*aria-disabled="true"/);
 });
+
+test("empty visual footer placeholder follows the feedback form", () => {
+  const html = read("index.html");
+  const css = read("assets/css/prototype.css");
+  const feedbackPosition = html.indexOf('class="feedback"');
+  const footerPosition = html.indexOf('class="site-footer-placeholder"');
+
+  assert.ok(feedbackPosition < footerPosition, "footer placeholder must follow feedback");
+  assert.match(html, /<footer class="site-footer-placeholder" aria-label="Место для подвала сайта"><\/footer>/);
+  assert.match(css, /\.site-footer-placeholder\s*\{[^}]*min-height:\s*360px/s);
+  assert.match(css, /@media \(max-width: 560px\)[\s\S]*\.site-footer-placeholder\s*\{[^}]*min-height:\s*240px/s);
+});
