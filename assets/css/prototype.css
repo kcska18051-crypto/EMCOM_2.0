@@ -710,6 +710,12 @@ a:focus-visible {
   line-height: 1.5;
 }
 
+.site-footer-placeholder {
+  width: 100%;
+  min-height: 360px;
+  background: #252525;
+}
+
 .wireframe-block {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -1080,6 +1086,10 @@ a:focus-visible {
 
   .feedback-submit {
     min-height: 58px;
+  }
+
+  .site-footer-placeholder {
+    min-height: 240px;
   }
 
   .feature {
