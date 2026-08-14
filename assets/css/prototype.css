@@ -94,10 +94,6 @@ a:focus-visible {
   display: none;
 }
 
-.nav-link--mobile {
-  display: none;
-}
-
 .nav-list,
 .about-menu {
   margin: 0;
@@ -131,6 +127,10 @@ a:focus-visible {
   font-weight: 600;
   letter-spacing: 0.02em;
   white-space: nowrap;
+}
+
+.nav-link--mobile {
+  display: none;
 }
 
 .nav-item--cta {
@@ -742,6 +742,115 @@ a:focus-visible {
   line-height: 1.5;
 }
 
+.company-page {
+  padding-top: 96px;
+  background: var(--color-surface);
+}
+
+.company-heading,
+.company-layout {
+  width: min(calc(100% - 64px), 1370px);
+  margin-inline: auto;
+}
+
+.company-heading {
+  padding: 64px 0 42px;
+}
+
+.company-heading h1 {
+  margin: 0;
+  font-size: clamp(38px, 4vw, 52px);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.breadcrumbs {
+  display: flex;
+  margin-top: 18px;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-text);
+}
+
+.company-layout {
+  display: grid;
+  padding-bottom: 96px;
+  grid-template-columns: 280px minmax(0, 1fr);
+  align-items: start;
+  gap: 68px;
+}
+
+.company-sidebar {
+  border-top: 1px solid var(--color-border);
+}
+
+.company-sidebar a,
+.company-sidebar span {
+  display: block;
+  min-height: 54px;
+  padding: 17px 18px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.company-sidebar .is-current {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.company-content {
+  min-width: 0;
+}
+
+.company-media {
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 2 / 1;
+}
+
+.company-lead,
+.company-copy-section p,
+.company-copy-section li {
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.company-lead {
+  margin: 30px 0 0;
+}
+
+.company-copy-section {
+  margin-top: 48px;
+}
+
+.company-copy-section h2 {
+  margin: 0;
+  font-size: clamp(26px, 2.4vw, 34px);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.company-copy-section ul {
+  margin: 24px 0 0;
+  padding-left: 23px;
+}
+
+.company-copy-section li + li {
+  margin-top: 10px;
+}
+
+.company-copy-section p {
+  margin: 26px 0 0;
+}
+
 .site-footer-placeholder {
   width: 100%;
   min-height: 360px;
@@ -844,6 +953,36 @@ a:focus-visible {
 
   .site-nav.is-open {
     display: block;
+  }
+
+  .company-page {
+    padding-top: 62px;
+  }
+
+  .company-heading,
+  .company-layout {
+    width: min(calc(100% - 48px), 1370px);
+  }
+
+  .company-heading {
+    padding: 42px 0 32px;
+  }
+
+  .company-layout {
+    display: block;
+    padding-bottom: 72px;
+  }
+
+  .company-sidebar {
+    display: none;
+  }
+
+  .company-media {
+    aspect-ratio: 1.45 / 1;
+  }
+
+  .company-copy-section {
+    margin-top: 40px;
   }
 
   .nav-list {
