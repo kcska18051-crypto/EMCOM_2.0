@@ -106,6 +106,15 @@ test("approved single-row desktop header and mobile navigation are present", () 
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.site-nav\.is-open\s*\{[^}]*display:\s*block/s);
 });
 
+test("desktop header keeps the menu beside the logo while the burger stays mobile-only", () => {
+  const css = read("assets/css/prototype.css");
+  const desktopCss = css.split("@media (max-width: 900px)")[0];
+
+  assert.match(desktopCss, /\.mobile-menu-toggle\s*\{[^}]*display:\s*none/s);
+  assert.match(desktopCss, /\.site-nav\s*\{[^}]*flex:\s*1 1 auto[^}]*margin-left:\s*40px/s);
+  assert.match(desktopCss, /\.nav-list\s*\{[^}]*justify-content:\s*space-between/s);
+});
+
 test("mobile menu helper synchronizes expanded state and panel class", async () => {
   const module = await import("../assets/js/header.js");
   const attributes = new Map();
