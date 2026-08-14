@@ -81,3 +81,31 @@ test("menu state helper synchronizes aria state and visibility", async () => {
   assert.equal(attributes.get("aria-expanded"), "false");
   assert.equal(menu.hidden, true);
 });
+
+test("approved CTA banner and eight service cards follow the feature block", () => {
+  const html = read("index.html");
+  const featuresPosition = html.lastIndexOf("data-feature");
+  const bannerPosition = html.indexOf('class="brief-cta"');
+  const servicesPosition = html.indexOf('class="services"');
+
+  assert.ok(featuresPosition < bannerPosition, "CTA banner must follow features");
+  assert.ok(bannerPosition < servicesPosition, "services must follow CTA banner");
+
+  assert.match(html, /Lorem ipsum dolor sit amet/);
+  assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\./);
+  assert.match(html, /Отправить техническое задание/);
+  assert.match(html, /Какую задачу необходимо решить\?/);
+  assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
+
+  assert.equal((html.match(/data-service-card/g) ?? []).length, 8);
+  assertInOrder(html, [
+    "Автономное и резервное электроснабжение",
+    "Трансформация и распределение электроэнергии",
+    "Теплоснабжение",
+    "Водоподготовка и очистка стоков",
+    "Насосные и компрессорные станции",
+    "Модульные ЦОД и аппаратные",
+    "Проектирование и строительство",
+    "Нестандартное модульное решение",
+  ]);
+});

@@ -235,6 +235,103 @@ a:focus-visible {
   line-height: 1.45;
 }
 
+.brief-cta {
+  width: min(calc(100% - 16px), 1600px);
+  margin-inline: auto;
+  padding: 38px 0;
+  background: #c9c9c9;
+}
+
+.brief-cta-content {
+  display: grid;
+  width: min(calc(100% - 80px), var(--container));
+  margin-inline: auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 48px;
+}
+
+.brief-cta-copy h2,
+.services-heading h2,
+.service-card h3 {
+  margin: 0;
+}
+
+.brief-cta-copy h2 {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.brief-cta-copy p {
+  max-width: 760px;
+  margin: 10px 0 0;
+  color: #4f4f4f;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.brief-cta-button {
+  min-height: 52px;
+  padding: 0 26px;
+  border: 0;
+  background: #343434;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.brief-cta-button:hover {
+  background: #202020;
+}
+
+.services {
+  width: min(calc(100% - 80px), var(--container));
+  margin-inline: auto;
+  padding: 82px 0 96px;
+}
+
+.services-heading {
+  max-width: 850px;
+  margin-bottom: 42px;
+}
+
+.services-heading h2 {
+  font-size: clamp(34px, 3.8vw, 48px);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.services-heading p {
+  margin: 18px 0 0;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  display: flex;
+  min-width: 0;
+  aspect-ratio: 4 / 5;
+  align-items: flex-end;
+  padding: 24px;
+  background: var(--color-placeholder);
+}
+
+.service-card h3 {
+  max-width: 240px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
 .wireframe-block {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -300,6 +397,15 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px 40px;
   }
+
+  .brief-cta-content,
+  .services {
+    width: calc(100% - 48px);
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 560px) {
@@ -358,6 +464,49 @@ a:focus-visible {
     padding: 40px 0 52px;
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .brief-cta {
+    width: calc(100% - 12px);
+    padding: 30px 0;
+  }
+
+  .brief-cta-content {
+    width: calc(100% - 40px);
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .brief-cta-copy h2 {
+    font-size: 24px;
+  }
+
+  .brief-cta-button {
+    width: 100%;
+    white-space: normal;
+  }
+
+  .services {
+    width: calc(100% - 40px);
+    padding: 58px 0 68px;
+  }
+
+  .services-heading {
+    margin-bottom: 30px;
+  }
+
+  .services-heading h2 {
+    font-size: 34px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .service-card {
+    aspect-ratio: 4 / 3;
+    padding: 22px;
   }
 
   .feature {
