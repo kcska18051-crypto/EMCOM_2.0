@@ -184,3 +184,35 @@ test("approved six-card work stages mosaic follows the production banner", () =>
   ]);
   assert.doesNotMatch(html, /Этап 10/);
 });
+
+test("approved feedback form follows the work stages", () => {
+  const html = read("index.html");
+  const lastStagePosition = html.lastIndexOf("data-work-stage");
+  const feedbackPosition = html.indexOf('class="feedback"');
+
+  assert.ok(lastStagePosition < feedbackPosition, "feedback form must follow work stages");
+  assertInOrder(html, [
+    "НАЧАТЬ ПРОЕКТ",
+    "Обсудим вашу техническую задачу",
+    "Направьте краткое описание проекта или готовое техническое задание. Специалисты ЭМКОМ изучат исходные данные и свяжутся с вами для уточнения требований.",
+    "+7 (812) 000-00-00",
+    "info@emkom.spb.ru",
+    "Имя",
+    "Компания",
+    "Телефон",
+    "Электронная почта",
+    "Краткое описание задачи",
+    "+ Прикрепить техническое задание",
+    "Передать проект",
+  ]);
+  assert.equal((html.match(/data-feedback-field(?=[\s>])/g) ?? []).length, 5);
+  assert.match(html, /Как к вам обращаться/);
+  assert.match(html, /Название организации/);
+  assert.match(html, /\+7 \(___\) ___-__-__/);
+  assert.match(html, /name@company\.ru/);
+  assert.match(html, /Расскажите об объекте и требуемом оборудовании/);
+  assert.match(html, /с политикой обработки персональных данных/);
+  assert.doesNotMatch(html, /<form/);
+  assert.match(html, /class="feedback-submit"[^>]*aria-disabled="true"/);
+  assert.match(html, /class="feedback-upload"[^>]*aria-disabled="true"/);
+});
