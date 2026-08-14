@@ -228,3 +228,11 @@ test("empty visual footer placeholder follows the feedback form", () => {
   assert.match(css, /\.site-footer-placeholder\s*\{[^}]*min-height:\s*360px/s);
   assert.match(css, /@media \(max-width: 560px\)[\s\S]*\.site-footer-placeholder\s*\{[^}]*min-height:\s*240px/s);
 });
+
+test("feedback row columns do not inherit vertical sibling spacing", () => {
+  const css = read("assets/css/prototype.css");
+
+  assert.doesNotMatch(css, /(^|\n)\.feedback-field \+ \.feedback-field,/);
+  assert.match(css, /\.feedback-panel > \.feedback-field \+ \.feedback-field,/);
+  assert.match(css, /\.feedback-panel > \.feedback-field-row,/);
+});

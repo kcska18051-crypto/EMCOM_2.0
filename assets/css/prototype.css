@@ -642,9 +642,9 @@ a:focus-visible {
   flex-direction: column;
 }
 
-.feedback-field + .feedback-field,
-.feedback-field-row,
-.feedback-field-row + .feedback-field {
+.feedback-panel > .feedback-field + .feedback-field,
+.feedback-panel > .feedback-field-row,
+.feedback-panel > .feedback-field-row + .feedback-field {
   margin-top: 22px;
 }
 
