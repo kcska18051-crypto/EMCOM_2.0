@@ -1241,6 +1241,95 @@ a:focus-visible {
   margin: 0;
 }
 
+.solution-level-layout {
+  display: grid;
+  width: min(calc(100% - 64px), 1370px);
+  margin-inline: auto;
+  padding-bottom: 96px;
+  grid-template-columns: 290px minmax(0, 1fr);
+  align-items: start;
+  gap: 54px;
+}
+
+.solution-level-sidebar {
+  border: 1px solid var(--color-border);
+  border-bottom: 0;
+}
+
+.solution-level-group h2,
+.solution-level-sidebar > span {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.solution-level-group h2 {
+  padding: 19px 20px 13px;
+  font-weight: 600;
+}
+
+.solution-level-group a,
+.solution-level-group span {
+  display: block;
+  padding: 8px 20px 8px 30px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.solution-level-group span:last-child {
+  padding-bottom: 20px;
+}
+
+.solution-level-sidebar > span {
+  position: relative;
+  display: flex;
+  min-height: 62px;
+  padding: 17px 40px 17px 20px;
+  border-top: 1px solid var(--color-border);
+  align-items: center;
+  color: var(--color-muted);
+}
+
+.solution-level-sidebar > span::after {
+  position: absolute;
+  right: 18px;
+  content: "⌄";
+  color: var(--color-muted);
+}
+
+.solution-level-content {
+  min-width: 0;
+}
+
+.solution-level-lead {
+  margin: 0 0 34px;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.solution-level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.solution-level-card {
+  display: flex;
+  min-width: 0;
+  min-height: 390px;
+  padding: 28px;
+  align-items: flex-end;
+  background: var(--color-placeholder);
+}
+
+.solution-level-card h2 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
 .site-footer-placeholder {
   width: 100%;
   min-height: 360px;
@@ -1461,6 +1550,25 @@ a:focus-visible {
   .service-detail-additional {
     margin-top: 48px;
     padding: 28px 24px 30px;
+  }
+
+  .solution-level-layout {
+    display: block;
+    width: min(calc(100% - 48px), 1370px);
+    padding-bottom: 72px;
+  }
+
+  .solution-level-sidebar {
+    display: none;
+  }
+
+  .solution-level-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .solution-level-card {
+    min-height: 280px;
   }
 
   .services-page-grid {
