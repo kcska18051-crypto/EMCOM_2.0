@@ -30,7 +30,7 @@ test("service detail has approved responsive rules", () => {
   const html = read(detailPath);
   const css = read("assets/css/prototype.css");
 
-  assert.match(html, /prototype\.css\?v=20260817-1/);
+  assert.match(html, /prototype\.css\?v=20260817-2/);
   assert.match(css, /\.service-detail-layout\s*\{[^}]*grid-template-columns:\s*260px minmax\(0, 1fr\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.service-detail-sidebar\s*\{[^}]*display:\s*none/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.comparison-row\s*\{[^}]*grid-template-columns:\s*1fr/s);
