@@ -76,8 +76,8 @@ test("knowledge pages expose active navigation and responsive layouts", () => {
 
   assert.match(list, /href="\.\/" aria-current="page">База знаний<\/a>/);
   assert.match(detail, /href="\.\.\/" aria-current="page">База знаний<\/a>/);
-  assert.match(list, /prototype\.css\?v=20260817-10/);
-  assert.match(detail, /prototype\.css\?v=20260817-10/);
+  assert.match(list, /prototype\.css\?v=20260817-11/);
+  assert.match(detail, /prototype\.css\?v=20260817-11/);
   assert.match(css, /\.knowledge-list-layout,[\s\S]*\.knowledge-detail-top\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\) 280px/s);
   assert.match(css, /\.knowledge-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width:\s*1200px\)[\s\S]*\.knowledge-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/s);
