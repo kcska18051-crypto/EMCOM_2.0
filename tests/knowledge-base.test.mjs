@@ -17,11 +17,15 @@ test("knowledge list contains nine minimal cards and one link", () => {
   assert.match(html, /Главная[\s\S]*База знаний/);
   assert.equal((html.match(/data-knowledge-card(?:\s|>)/g) ?? []).length, 9);
   assert.equal((html.match(/data-knowledge-card-link/g) ?? []).length, 1);
-  assert.equal((html.match(/data-knowledge-category/g) ?? []).length, 5);
+  assert.equal((html.match(/data-knowledge-menu-item/g) ?? []).length, 9);
+  assert.equal((html.match(/data-knowledge-menu-item aria-current="page"/g) ?? []).length, 1);
   for (let index = 1; index <= 9; index += 1) {
     assert.match(html, new RegExp(`Статья ${index}`));
   }
   assert.match(html, /href="statya-1\/"[^>]*data-knowledge-card-link/);
+  assert.doesNotMatch(html.match(/<aside class="knowledge-article-menu"[\s\S]*?<\/aside>/)?.[0] ?? "", /<a\b|<button\b/i);
+  assert.ok(html.indexOf("knowledge-grid") < html.indexOf("knowledge-article-menu"));
+  assert.doesNotMatch(html, /data-knowledge-category/);
   assert.doesNotMatch(html, /data-year-filter|data-tag-cloud|<time\b|Дата|Рубрика/i);
 });
 
@@ -32,9 +36,14 @@ test("knowledge detail keeps only the approved article blocks", () => {
   assert.equal((html.match(/data-knowledge-hero/g) ?? []).length, 1);
   assert.match(html, /<h1>Статья 1<\/h1>/);
   assert.match(html, /Главная[\s\S]*href="\.\.\/"[\s\S]*База знаний[\s\S]*Статья 1/);
-  assert.equal((html.match(/data-knowledge-category/g) ?? []).length, 5);
+  assert.equal((html.match(/data-knowledge-menu-item/g) ?? []).length, 9);
+  assert.equal((html.match(/data-knowledge-menu-item aria-current="page"/g) ?? []).length, 1);
   assert.match(html, /data-knowledge-article/);
   assert.match(html, /Lorem ipsum dolor sit amet/);
+  assert.doesNotMatch(html.match(/<aside class="knowledge-article-menu"[\s\S]*?<\/aside>/)?.[0] ?? "", /<a\b|<button\b/i);
+  assert.doesNotMatch(html, /data-knowledge-category|knowledge-sidebar/);
+  assert.ok(html.indexOf("data-knowledge-hero") < html.indexOf("knowledge-article-menu"));
+  assert.ok(html.indexOf("knowledge-article-menu") < html.indexOf("knowledge-detail-body"));
   assert.doesNotMatch(html, /<form\b|data-gallery|data-related|data-tag-cloud|<time\b/i);
 });
 
@@ -67,11 +76,13 @@ test("knowledge pages expose active navigation and responsive layouts", () => {
 
   assert.match(list, /href="\.\/" aria-current="page">База знаний<\/a>/);
   assert.match(detail, /href="\.\.\/" aria-current="page">База знаний<\/a>/);
-  assert.match(list, /prototype\.css\?v=20260817-8/);
-  assert.match(detail, /prototype\.css\?v=20260817-8/);
-  assert.match(css, /\.knowledge-layout\s*\{[^}]*grid-template-columns:\s*280px minmax\(0, 1fr\)/s);
+  assert.match(list, /prototype\.css\?v=20260817-9/);
+  assert.match(detail, /prototype\.css\?v=20260817-9/);
+  assert.match(css, /\.knowledge-list-layout,[\s\S]*\.knowledge-detail-top\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\) 280px/s);
   assert.match(css, /\.knowledge-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width:\s*1200px\)[\s\S]*\.knowledge-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/s);
-  assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.knowledge-layout\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(css, /\.knowledge-detail-body\s*\{[^}]*width:\s*calc\(100% - 328px\)/s);
+  assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.knowledge-list-layout,[\s\S]*\.knowledge-detail-top\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.knowledge-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.knowledge-detail-body\s*\{[^}]*width:\s*100%/s);
 });
