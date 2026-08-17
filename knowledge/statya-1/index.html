@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Статья 1 — База знаний — ЭМКОМ_2.0</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/prototype.css?v=20260817-8">
+  <link rel="stylesheet" href="../../assets/css/prototype.css?v=20260817-9">
 </head>
 <body>
   <div class="site-shell">
@@ -17,21 +17,25 @@
       </ul></nav>
     </div></header>
     <main class="knowledge-detail-page" data-knowledge-detail>
-      <section class="knowledge-detail-intro">
+      <header class="knowledge-detail-breadcrumbs">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="../../">Главная</a><span aria-hidden="true">—</span><a href="../">База знаний</a><span aria-hidden="true">—</span><span>Статья 1</span></nav>
+      </header>
+      <div class="knowledge-detail-top">
         <div class="knowledge-detail-hero media-placeholder" data-knowledge-hero aria-label="Место для изображения"></div>
-        <header class="knowledge-detail-heading">
-          <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="../../">Главная</a><span aria-hidden="true">—</span><a href="../">База знаний</a><span aria-hidden="true">—</span><span>Статья 1</span></nav>
-          <h1>Статья 1</h1>
-        </header>
-      </section>
-      <div class="knowledge-layout knowledge-detail-layout">
-        <aside class="knowledge-sidebar" data-knowledge-sidebar aria-label="Категории статей">
-          <span data-knowledge-category>Lorem ipsum</span>
-          <span data-knowledge-category>Aenean commodo</span>
-          <span data-knowledge-category>Donec quam felis</span>
-          <span data-knowledge-category>Nulla consequat</span>
-          <span data-knowledge-category>Vivamus elementum</span>
+        <aside class="knowledge-article-menu" data-knowledge-article-menu aria-label="Статьи">
+          <span data-knowledge-menu-item aria-current="page">Статья 1</span>
+          <span data-knowledge-menu-item>Статья 2</span>
+          <span data-knowledge-menu-item>Статья 3</span>
+          <span data-knowledge-menu-item>Статья 4</span>
+          <span data-knowledge-menu-item>Статья 5</span>
+          <span data-knowledge-menu-item>Статья 6</span>
+          <span data-knowledge-menu-item>Статья 7</span>
+          <span data-knowledge-menu-item>Статья 8</span>
+          <span data-knowledge-menu-item>Статья 9</span>
         </aside>
+      </div>
+      <div class="knowledge-detail-body">
+        <h1>Статья 1</h1>
         <article class="knowledge-article" data-knowledge-article>
           <p class="knowledge-lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
