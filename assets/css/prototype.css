@@ -1579,6 +1579,135 @@ a:focus-visible {
   color: var(--color-muted);
 }
 
+.knowledge-page,
+.knowledge-detail-page {
+  padding-top: 96px;
+  background: var(--color-surface);
+}
+
+.knowledge-heading {
+  width: min(calc(100% - 64px), 1370px);
+  margin-inline: auto;
+  padding: 62px 0 52px;
+}
+
+.knowledge-heading h1,
+.knowledge-detail-heading h1 {
+  margin: 0;
+  font-size: clamp(38px, 4vw, 58px);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.knowledge-heading .breadcrumbs {
+  margin-top: 22px;
+}
+
+.knowledge-layout {
+  display: grid;
+  width: min(calc(100% - 64px), 1370px);
+  margin-inline: auto;
+  padding-bottom: 96px;
+  grid-template-columns: 280px minmax(0, 1fr);
+  align-items: start;
+  gap: 64px;
+}
+
+.knowledge-sidebar {
+  border-top: 1px solid var(--color-border);
+}
+
+.knowledge-sidebar span {
+  display: flex;
+  min-height: 62px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.knowledge-grid {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 42px 24px;
+}
+
+.knowledge-card {
+  min-width: 0;
+}
+
+a.knowledge-card:hover .knowledge-card-title {
+  color: var(--color-logo);
+}
+
+.knowledge-card-media {
+  display: block;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.knowledge-card-title {
+  display: block;
+  margin-top: 16px;
+  color: var(--color-text);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.knowledge-detail-intro {
+  position: relative;
+  width: min(calc(100% - 64px), 1500px);
+  margin-inline: auto;
+}
+
+.knowledge-detail-hero {
+  width: 100%;
+  height: 430px;
+}
+
+.knowledge-detail-heading {
+  position: absolute;
+  right: 56px;
+  bottom: 54px;
+  left: 56px;
+}
+
+.knowledge-detail-heading .breadcrumbs {
+  margin-bottom: 18px;
+  color: #5e5e5e;
+}
+
+.knowledge-detail-layout {
+  padding-top: 68px;
+}
+
+.knowledge-article {
+  min-width: 0;
+}
+
+.knowledge-article p {
+  margin: 0 0 24px;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.knowledge-article .knowledge-lead {
+  color: var(--color-text);
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+@media (max-width: 1200px) {
+  .knowledge-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1200px) and (min-width: 901px) {
   .services-page-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1780,6 +1909,73 @@ a:focus-visible {
   .production-inline-image {
     width: 100%;
     margin: 28px 0;
+  }
+
+  .knowledge-page,
+  .knowledge-detail-page {
+    padding-top: 62px;
+  }
+
+  .knowledge-heading,
+  .knowledge-layout {
+    width: min(calc(100% - 48px), 1370px);
+  }
+
+  .knowledge-heading {
+    padding: 42px 0 38px;
+  }
+
+  .knowledge-heading h1,
+  .knowledge-detail-heading h1 {
+    font-size: clamp(32px, 8vw, 46px);
+  }
+
+  .knowledge-layout {
+    grid-template-columns: 1fr;
+    padding-bottom: 72px;
+    gap: 38px;
+  }
+
+  .knowledge-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .knowledge-sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .knowledge-sidebar span {
+    min-height: 52px;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .knowledge-detail-intro {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .knowledge-detail-hero {
+    height: auto;
+    aspect-ratio: 1.65 / 1;
+  }
+
+  .knowledge-detail-heading {
+    position: static;
+    width: min(calc(100% - 48px), 1370px);
+    margin-inline: auto;
+    padding: 34px 0 38px;
+  }
+
+  .knowledge-detail-heading .breadcrumbs {
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .knowledge-detail-layout {
+    padding-top: 0;
   }
 
   .service-detail-sidebar {
@@ -2121,6 +2317,16 @@ a:focus-visible {
 @media (max-width: 560px) {
   .brand {
     width: min(46vw, 154px);
+  }
+
+  .knowledge-heading,
+  .knowledge-layout,
+  .knowledge-detail-heading {
+    width: calc(100% - 40px);
+  }
+
+  .knowledge-sidebar {
+    grid-template-columns: 1fr;
   }
 
   .hero {
