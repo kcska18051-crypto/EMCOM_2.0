@@ -44,7 +44,7 @@ test("completed company pages expose reciprocal desktop and mobile links", () =>
   assert.match(partners, /<a class="is-current" href="\.\/" aria-current="page" data-company-side-item>Партнёры<\/a>/);
 
   for (const html of [company, history, partners]) {
-    assert.equal(mobileNavLinkCount(html), 4);
+    assert.equal(mobileNavLinkCount(html), 5);
   }
 });
 

@@ -38,6 +38,7 @@ test("homepage contains only the approved header, hero, and feature content", ()
     "История компании",
     "Партнёры",
     "Сертификаты/лицензии",
+    "Команда",
     "Реквизиты",
   ]);
 

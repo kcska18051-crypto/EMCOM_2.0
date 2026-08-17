@@ -46,7 +46,7 @@ test("completed company pages expose reciprocal licenses links", () => {
   assert.match(licenses, /<a class="is-current" href="\.\/" aria-current="page" data-company-side-item>Сертификаты\/лицензии<\/a>/);
 
   for (const html of [company, history, partners, licenses]) {
-    assert.equal(mobileNavLinkCount(html), 4);
+    assert.equal(mobileNavLinkCount(html), 5);
   }
 });
 

@@ -41,3 +41,42 @@ test("team pages expose the approved responsive layouts", () => {
   assert.match(css, /@media \(max-width:\s*700px\)[\s\S]*\.team-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(css, /@media \(max-width:\s*700px\)[\s\S]*\.team-profile\s*\{[^}]*grid-template-columns:\s*1fr/s);
 });
+
+test("all completed headers link to the team page", () => {
+  const headers = new Map([
+    ["index.html", "company/staff/"],
+    ["company/index.html", "staff/"],
+    ["company/history/index.html", "../staff/"],
+    ["company/partners/index.html", "../staff/"],
+    ["company/licenses/index.html", "../staff/"],
+    ["solutions/index.html", "../company/staff/"],
+    ["solutions/avtonomnoe-i-rezervnoe-elektrosnabzhenie/index.html", "../../company/staff/"],
+    ["solutions/avtonomnoe-i-rezervnoe-elektrosnabzhenie/dizelnye-elektrostantsii/index.html", "../../../company/staff/"],
+    ["services/index.html", "../company/staff/"],
+    ["services/predproektnoe-obsledovanie/index.html", "../../company/staff/"],
+    ["cases/index.html", "../company/staff/"],
+    ["cases/proekt-1/index.html", "../../company/staff/"],
+    ["production/index.html", "../company/staff/"],
+    ["knowledge/index.html", "../company/staff/"],
+    ["knowledge/statya-1/index.html", "../../company/staff/"],
+    ["contacts/index.html", "../company/staff/"]
+  ]);
+
+  for (const [path, href] of headers) {
+    assert.ok(read(path).includes(`<a href="${href}">Команда</a>`), `${path} must link to ${href}`);
+  }
+});
+
+test("all completed company pages expose the team subsection", () => {
+  const pages = [
+    "company/index.html",
+    "company/history/index.html",
+    "company/partners/index.html",
+    "company/licenses/index.html"
+  ];
+
+  for (const path of pages) {
+    const html = read(path);
+    assert.ok((html.match(/>Команда<\/a>/g) ?? []).length >= 3, `${path} must expose team in header, mobile, and sidebar navigation`);
+  }
+});

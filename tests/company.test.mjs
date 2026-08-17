@@ -11,7 +11,7 @@ test("company page follows the approved Aspro content structure", () => {
   const html = read("company/index.html");
   assert.match(html, /<h1[^>]*>О компании<\/h1>/);
   assert.match(html, /aria-label="Хлебные крошки"/);
-  assert.equal((html.match(/data-company-side-item/g) ?? []).length, 5);
+  assert.equal((html.match(/data-company-side-item/g) ?? []).length, 6);
   assert.match(html, /class="company-media media-placeholder"/);
   assert.match(html, /<h2>Lorem ipsum dolor sit amet<\/h2>/);
   assert.match(html, /<h2>Aenean vulputate eleifend tellus<\/h2>/);
@@ -39,6 +39,7 @@ test("company page exposes completed subsections on mobile", () => {
   assert.match(html, /<a href="\.\/" aria-current="page">О компании<\/a>/);
   assert.match(html, /<a href="history\/">История компании<\/a>/);
   assert.match(html, /<a href="partners\/">Партнёры<\/a>/);
+  assert.match(html, /<a href="staff\/">Команда<\/a>/);
   assert.doesNotMatch(html, /company-mobile-switch/);
   assert.match(css, /\.company-mobile-nav\s*\{[^}]*display:\s*none/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.company-mobile-nav\s*\{[^}]*display:\s*flex/s);
