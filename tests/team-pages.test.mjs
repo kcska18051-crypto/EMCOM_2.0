@@ -32,3 +32,12 @@ test("employee detail contains only the approved profile content", () => {
   assert.doesNotMatch(main, /Услуги|Проекты|Отзывы|Социальные сети|Написать сообщение|<form\b/i);
   assert.doesNotMatch(main, /href="(?:tel:|mailto:)/i);
 });
+
+test("team pages expose the approved responsive layouts", () => {
+  const css = read("assets/css/prototype.css");
+
+  assert.match(css, /\.team-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,/s);
+  assert.match(css, /@media \(max-width:\s*1100px\)[\s\S]*\.team-grid\s*\{[^}]*repeat\(2,/s);
+  assert.match(css, /@media \(max-width:\s*700px\)[\s\S]*\.team-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(css, /@media \(max-width:\s*700px\)[\s\S]*\.team-profile\s*\{[^}]*grid-template-columns:\s*1fr/s);
+});
