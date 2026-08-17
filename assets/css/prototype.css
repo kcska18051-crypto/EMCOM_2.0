@@ -1173,6 +1173,10 @@ a:focus-visible {
   aspect-ratio: 16 / 6;
 }
 
+.production-inline-image.media-placeholder {
+  min-height: 0;
+}
+
 .service-detail-content {
   min-width: 0;
 }
