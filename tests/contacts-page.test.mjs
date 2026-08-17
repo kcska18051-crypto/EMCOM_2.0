@@ -20,6 +20,17 @@ test("contacts page contains the approved two offices", () => {
   assert.ok(html.indexOf("Санкт-Петербург") < html.indexOf("Кировск"));
 });
 
+test("contacts follow the Aspro map-side-below composition", () => {
+  const html = read("contacts/index.html");
+  const css = read("assets/css/prototype.css");
+
+  assert.match(html, /class="contact-office contact-office--side"[^>]*data-contact-office/);
+  assert.match(html, /class="contact-office contact-office--below"[^>]*data-contact-office/);
+  assert.match(css, /\.contacts-layout\s*\{[^}]*grid-template-areas:\s*"map side"\s*"below side"/s);
+  assert.match(css, /\.contact-office--below\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*minmax\(220px, 0\.72fr\) minmax\(0, 1\.28fr\)/s);
+  assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.contacts-layout\s*\{[^}]*grid-template-areas:\s*"map"\s*"side"\s*"below"/s);
+});
+
 test("contacts page uses the exact approved contact data", () => {
   const html = read("contacts/index.html");
 
@@ -67,9 +78,9 @@ test("contacts page exposes active navigation and responsive layout", () => {
   const css = read("assets/css/prototype.css");
 
   assert.match(html, /href="\.\/" aria-current="page">Контакты<\/a>/);
-  assert.match(html, /prototype\.css\?v=20260817-10/);
+  assert.match(html, /prototype\.css\?v=20260817-11/);
   assert.match(css, /\.contacts-layout\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1\.65fr\) minmax\(320px, 0\.75fr\)/s);
-  assert.match(css, /\.contacts-map\s*\{[^}]*min-height:\s*720px/s);
+  assert.match(css, /\.contacts-map\s*\{[^}]*min-height:\s*500px/s);
   assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.contacts-layout\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.contacts-map\s*\{[^}]*min-height:\s*0/s);
 });

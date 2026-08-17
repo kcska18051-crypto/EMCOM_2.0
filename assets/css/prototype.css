@@ -1747,25 +1747,37 @@ a.knowledge-card:hover .knowledge-card-title {
   display: grid;
   padding-bottom: 96px;
   grid-template-columns: minmax(0, 1.65fr) minmax(320px, 0.75fr);
-  align-items: stretch;
+  grid-template-areas:
+    "map side"
+    "below side";
+  align-items: start;
   gap: 48px;
 }
 
 .contacts-map {
-  min-height: 720px;
-}
-
-.contacts-offices {
-  display: grid;
-  min-width: 0;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  min-height: 500px;
+  grid-area: map;
 }
 
 .contact-office {
   min-width: 0;
   border: 1px solid var(--color-border);
   background: var(--color-surface);
+}
+
+.contact-office--side {
+  grid-area: side;
+}
+
+.contact-office--below {
+  display: grid;
+  grid-area: below;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+}
+
+.contact-office--below .contact-office-media {
+  min-height: 100%;
+  aspect-ratio: auto;
 }
 
 .contact-office-media {
@@ -2103,6 +2115,10 @@ a.knowledge-card:hover .knowledge-card-title {
 
   .contacts-layout {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "map"
+      "side"
+      "below";
     padding-bottom: 72px;
     gap: 30px;
   }
@@ -2112,8 +2128,13 @@ a.knowledge-card:hover .knowledge-card-title {
     aspect-ratio: 16 / 9;
   }
 
-  .contacts-offices {
-    grid-template-rows: none;
+  .contact-office--below {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-office--below .contact-office-media {
+    min-height: 0;
+    aspect-ratio: 16 / 7;
   }
 
   .service-detail-sidebar {
