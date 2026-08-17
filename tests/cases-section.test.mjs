@@ -67,8 +67,8 @@ test("cases pages expose desktop, intermediate and mobile layouts", () => {
   const listing = read(listingPath);
   const detail = read(detailPath);
   const css = read("assets/css/prototype.css");
-  assert.match(listing, /prototype\.css\?v=20260817-11/);
-  assert.match(detail, /prototype\.css\?v=20260817-11/);
+  assert.match(listing, /prototype\.css\?v=20260817-12/);
+  assert.match(detail, /prototype\.css\?v=20260817-12/);
   assert.match(css, /\.cases-page-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 1200px\) and \(min-width: 901px\)[\s\S]*\.cases-page-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.cases-page-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
