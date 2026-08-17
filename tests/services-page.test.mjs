@@ -50,7 +50,7 @@ test("solutions page follows approved responsive grid", () => {
   const html = read("solutions/index.html");
   const css = read("assets/css/prototype.css");
 
-  assert.match(html, /prototype\.css\?v=20260817-2/);
+  assert.match(html, /prototype\.css\?v=20260817-3/);
   assert.match(css, /\.services-page-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 1200px\) and \(min-width: 901px\)[\s\S]*\.services-page-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.services-page-sidebar\s*\{[^}]*display:\s*none/s);
