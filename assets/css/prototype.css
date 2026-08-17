@@ -1161,6 +1161,18 @@ a:focus-visible {
   gap: 68px;
 }
 
+.production-content-layout {
+  width: min(calc(100% - 80px), 1370px);
+  margin: 56px auto 0;
+  padding-bottom: 96px;
+}
+
+.production-inline-image {
+  width: 100%;
+  margin: 36px 0;
+  aspect-ratio: 16 / 6;
+}
+
 .service-detail-content {
   min-width: 0;
 }
@@ -1753,6 +1765,17 @@ a:focus-visible {
     width: min(calc(100% - 48px), 1370px);
     margin-top: 0;
     padding-bottom: 72px;
+  }
+
+  .production-content-layout {
+    width: min(calc(100% - 48px), 1370px);
+    margin: 0 auto;
+    padding-bottom: 72px;
+  }
+
+  .production-inline-image {
+    width: 100%;
+    margin: 28px 0;
   }
 
   .service-detail-sidebar {

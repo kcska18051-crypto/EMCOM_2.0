@@ -11,32 +11,39 @@ test("production page contains only the approved semantic blocks", () => {
   assert.match(html, /<h1>Производство<\/h1>/);
   assert.match(html, /Главная[\s\S]*Производство/);
   assert.equal((html.match(/data-production-hero/g) ?? []).length, 1);
-  assert.equal((html.match(/data-production-side-item/g) ?? []).length, 5);
+  assert.equal((html.match(/data-production-side-item/g) ?? []).length, 0);
+  assert.equal((html.match(/data-production-inline-image/g) ?? []).length, 1);
   assert.equal((html.match(/data-production-calculation-control/g) ?? []).length, 1);
   assert.equal((html.match(/data-production-description/g) ?? []).length, 1);
   assert.match(html, /Получить предварительный расчёт/);
   assert.match(html, /Lorem ipsum dolor sit amet/);
   assert.doesNotMatch(html, /<form\b/i);
   assert.doesNotMatch(html, /<table\b/i);
+  assert.doesNotMatch(html, /<aside\b/i);
   assert.doesNotMatch(html, /data-comparison-row/);
 
   const hero = html.indexOf("data-production-hero");
   const heading = html.indexOf("<h1>Производство</h1>");
-  const layout = html.indexOf("service-detail-layout");
+  const layout = html.indexOf("production-content-layout");
+  const firstText = html.indexOf("data-production-text-start");
+  const inlineImage = html.indexOf("data-production-inline-image");
+  const finalText = html.indexOf("data-production-text-end");
   const footer = html.indexOf("site-footer-placeholder");
   assert.ok(hero < heading && heading < layout && layout < footer);
+  assert.ok(firstText < inlineImage && inlineImage < finalText);
 });
 
-test("production page reuses the approved responsive service detail shell", () => {
+test("production page exposes the approved responsive full-width article", () => {
   const html = read("production/index.html");
   const css = read("assets/css/prototype.css");
 
   assert.match(html, /class="service-detail-page production-page"/);
-  assert.match(html, /class="services-page-sidebar service-detail-sidebar"/);
+  assert.match(html, /class="production-content-layout"/);
   assert.match(html, /class="service-detail-content"/);
-  assert.match(html, /prototype\.css\?v=20260817-5/);
-  assert.match(css, /\.service-detail-layout\s*\{[^}]*grid-template-columns:\s*260px minmax\(0, 1fr\)/s);
-  assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.service-detail-layout\s*\{[^}]*display:\s*block/s);
+  assert.match(html, /prototype\.css\?v=20260817-6/);
+  assert.match(css, /\.production-content-layout\s*\{[^}]*width:\s*min\(calc\(100% - 80px\), 1370px\)/s);
+  assert.match(css, /\.production-inline-image\s*\{[^}]*aspect-ratio:\s*16 \/ 6/s);
+  assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.production-content-layout\s*\{[^}]*width:\s*min\(calc\(100% - 48px\), 1370px\)/s);
 });
 
 test("all completed headers link to production", () => {
