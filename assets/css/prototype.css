@@ -1831,6 +1831,143 @@ a.knowledge-card:hover .knowledge-card-title {
   overflow-wrap: anywhere;
 }
 
+.team-content {
+  min-width: 0;
+}
+
+.team-intro {
+  max-width: 860px;
+  margin: 0 0 34px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.team-card {
+  display: grid;
+  min-width: 0;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.team-card-media {
+  aspect-ratio: 4 / 5;
+}
+
+.team-card-role {
+  margin-top: 18px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.team-card strong {
+  margin-top: 7px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.team-profile {
+  display: grid;
+  padding: 44px;
+  border: 1px solid var(--color-border);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  gap: 56px;
+}
+
+.team-profile-media {
+  aspect-ratio: 1 / 1;
+}
+
+.team-profile-role span,
+.team-profile-contacts dt {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.team-profile-role strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.team-profile-contacts {
+  display: grid;
+  margin: 42px 0 34px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.team-profile-contacts div,
+.team-profile-contacts dt,
+.team-profile-contacts dd {
+  margin: 0;
+}
+
+.team-profile-contacts dd {
+  margin-top: 7px;
+  overflow-wrap: anywhere;
+}
+
+.team-profile-copy p {
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+.team-profile-copy p + p {
+  margin-top: 22px;
+}
+
+@media (max-width: 1100px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-profile {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.5fr);
+    gap: 36px;
+  }
+}
+
+@media (max-width: 700px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-profile {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    gap: 28px;
+  }
+
+  .team-profile-copy {
+    display: contents;
+  }
+
+  .team-profile-role {
+    order: 1;
+  }
+
+  .team-profile-media {
+    order: 2;
+  }
+
+  .team-profile-contacts {
+    order: 3;
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+
+  .team-profile-copy p {
+    order: 4;
+    margin: 0;
+  }
+}
+
 @media (max-width: 1200px) {
   .knowledge-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
