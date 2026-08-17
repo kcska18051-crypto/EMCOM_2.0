@@ -1558,6 +1558,10 @@ a:focus-visible {
     padding-bottom: 72px;
   }
 
+  .solution-level-page .company-heading h1 {
+    font-size: clamp(30px, 8vw, 34px);
+  }
+
   .solution-level-sidebar {
     display: none;
   }
