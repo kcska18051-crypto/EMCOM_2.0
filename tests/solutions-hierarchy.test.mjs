@@ -75,8 +75,9 @@ test("completed page headers link to solutions and leave services inactive", () 
 test("second level follows approved desktop and mobile grids", () => {
   const html = read(groupPath);
   const css = read("assets/css/prototype.css");
-  assert.match(html, /prototype\.css\?v=20260817-1/);
+  assert.match(html, /prototype\.css\?v=20260817-2/);
   assert.match(css, /\.solution-level-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.solution-level-sidebar\s*\{[^}]*display:\s*none/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.solution-level-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.solution-level-page \.company-heading h1\s*\{[^}]*font-size:\s*clamp\(30px, 8vw, 34px\)/s);
 });
