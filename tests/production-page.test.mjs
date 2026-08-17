@@ -43,6 +43,7 @@ test("production page exposes the approved responsive full-width article", () =>
   assert.match(html, /prototype\.css\?v=20260817-6/);
   assert.match(css, /\.production-content-layout\s*\{[^}]*width:\s*min\(calc\(100% - 80px\), 1370px\)/s);
   assert.match(css, /\.production-inline-image\s*\{[^}]*aspect-ratio:\s*16 \/ 6/s);
+  assert.match(css, /\.production-inline-image\.media-placeholder\s*\{[^}]*min-height:\s*0/s);
   assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.production-content-layout\s*\{[^}]*width:\s*min\(calc\(100% - 48px\), 1370px\)/s);
 });
 
