@@ -47,7 +47,7 @@ test("history timeline has wide, intermediate, and mobile layouts", () => {
   const html = read("company/history/index.html");
   const css = read("assets/css/prototype.css");
 
-  assert.match(html, /href="\.\.\/\.\.\/assets\/css\/prototype\.css\?v=20260817-1"/);
+  assert.match(html, /href="\.\.\/\.\.\/assets\/css\/prototype\.css\?v=20260817-2"/);
   assert.match(css, /\.history-item--with-image\s*\{[^}]*grid-template-columns:\s*88px minmax\(0, 1fr\) 303px/s);
   assert.match(css, /@media \(min-width: 901px\) and \(max-width: 1100px\)[\s\S]*\.history-image\s*\{[^}]*grid-column:\s*2/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.history-item[\s\S]*display:\s*block/s);
