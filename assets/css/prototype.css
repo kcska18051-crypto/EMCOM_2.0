@@ -1717,6 +1717,108 @@ a.knowledge-card:hover .knowledge-card-title {
   line-height: 1.65;
 }
 
+.contacts-page {
+  padding-top: 96px;
+  background: var(--color-surface);
+}
+
+.contacts-heading,
+.contacts-layout {
+  width: min(calc(100% - 64px), 1370px);
+  margin-inline: auto;
+}
+
+.contacts-heading {
+  padding: 62px 0 52px;
+}
+
+.contacts-heading h1 {
+  margin: 0;
+  font-size: clamp(38px, 4vw, 58px);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.contacts-heading .breadcrumbs {
+  margin-top: 22px;
+}
+
+.contacts-layout {
+  display: grid;
+  padding-bottom: 96px;
+  grid-template-columns: minmax(0, 1.65fr) minmax(320px, 0.75fr);
+  align-items: stretch;
+  gap: 48px;
+}
+
+.contacts-map {
+  min-height: 720px;
+}
+
+.contacts-offices {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.contact-office {
+  min-width: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.contact-office-media {
+  min-height: 0;
+  aspect-ratio: 16 / 7;
+}
+
+.contact-office-content {
+  padding: 24px 26px 26px;
+}
+
+.contact-office-content h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.contact-office-address {
+  margin: 14px 0 20px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-office-details {
+  margin: 0;
+}
+
+.contact-office-details div {
+  display: grid;
+  padding: 11px 0;
+  border-top: 1px solid var(--color-border);
+  grid-template-columns: minmax(108px, 0.8fr) minmax(0, 1.2fr);
+  gap: 16px;
+}
+
+.contact-office-details dt,
+.contact-office-details dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.contact-office-details dt {
+  color: var(--color-muted);
+}
+
+.contact-office-details dd {
+  color: var(--color-text);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 1200px) {
   .knowledge-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1980,6 +2082,38 @@ a.knowledge-card:hover .knowledge-card-title {
     max-width: none;
     margin: 38px 0 0;
     padding: 0 24px 72px;
+  }
+
+  .contacts-page {
+    padding-top: 62px;
+  }
+
+  .contacts-heading,
+  .contacts-layout {
+    width: min(calc(100% - 48px), 1370px);
+  }
+
+  .contacts-heading {
+    padding: 42px 0 38px;
+  }
+
+  .contacts-heading h1 {
+    font-size: clamp(32px, 8vw, 46px);
+  }
+
+  .contacts-layout {
+    grid-template-columns: 1fr;
+    padding-bottom: 72px;
+    gap: 30px;
+  }
+
+  .contacts-map {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .contacts-offices {
+    grid-template-rows: none;
   }
 
   .service-detail-sidebar {
@@ -2332,6 +2466,20 @@ a.knowledge-card:hover .knowledge-card-title {
 
   .knowledge-detail-body {
     padding-inline: 20px;
+  }
+
+  .contacts-heading,
+  .contacts-layout {
+    width: calc(100% - 40px);
+  }
+
+  .contact-office-content {
+    padding: 22px 20px 24px;
+  }
+
+  .contact-office-details div {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .hero {
