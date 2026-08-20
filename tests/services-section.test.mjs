@@ -52,7 +52,7 @@ test("pre-project survey detail matches the approved semantic page", () => {
   assert.match(html, /<h2>Дополнительно<\/h2>/);
   assert.match(html, /Lorem ipsum dolor sit amet/);
   assert.equal((html.match(/Получить предварительный расчёт/g) ?? []).length, 1);
-  assert.match(html, /<span class="service-detail-calculation-control" aria-disabled="true">Получить предварительный расчёт<\/span>/);
+  assert.match(html, /<button class="service-detail-calculation-control" type="button" data-application-modal-open>Получить предварительный расчёт<\/button>/);
   assert.doesNotMatch(html, /<form|feedback-form|id="feedback-title"/);
 });
 
@@ -84,8 +84,8 @@ test("services pages reuse the approved responsive rules", () => {
   const detail = read(detailPath);
   const css = read("assets/css/prototype.css");
 
-  assert.match(listing, /prototype\.css\?v=20260820-1/);
-  assert.match(detail, /prototype\.css\?v=20260820-1/);
+  assert.match(listing, /prototype\.css\?v=20260820-2/);
+  assert.match(detail, /prototype\.css\?v=20260820-2/);
   assert.match(css, /\.services-page-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.services-page-sidebar\s*\{[^}]*display:\s*none/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.services-page-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);

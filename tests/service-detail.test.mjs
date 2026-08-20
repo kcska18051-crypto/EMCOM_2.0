@@ -30,13 +30,13 @@ test("service detail has approved responsive rules", () => {
   const html = read(detailPath);
   const css = read("assets/css/prototype.css");
 
-  assert.match(html, /prototype\.css\?v=20260820-1/);
+  assert.match(html, /prototype\.css\?v=20260820-2/);
   assert.match(css, /\.service-detail-layout\s*\{[^}]*grid-template-columns:\s*260px minmax\(0, 1fr\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.service-detail-sidebar\s*\{[^}]*display:\s*none/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.comparison-row\s*\{[^}]*grid-template-columns:\s*1fr/s);
 });
 
-test("service detail shows one non-interactive calculation control", () => {
+test("service detail shows one application modal button", () => {
   const html = read(detailPath);
   const css = read("assets/css/prototype.css");
   const label = "Получить предварительный расчёт";
@@ -44,9 +44,8 @@ test("service detail shows one non-interactive calculation control", () => {
   assert.equal((html.match(new RegExp(label, "g")) ?? []).length, 1);
   assert.match(
     html,
-    /<span class="service-detail-calculation-control" aria-disabled="true">Получить предварительный расчёт<\/span>/,
+    /<button class="service-detail-calculation-control" type="button" data-application-modal-open>Получить предварительный расчёт<\/button>/,
   );
-  assert.doesNotMatch(html, new RegExp(`<(?:a|button)[^>]*>${label}<\\/(?:a|button)>`));
   assert.match(css, /\.service-detail-action\s*\{[^}]*display:\s*flex;[^}]*justify-content:\s*flex-end;/s);
   assert.match(css, /\.service-detail-calculation-control\s*\{[^}]*background:\s*#343434;[^}]*color:\s*#fff;/s);
   assert.match(

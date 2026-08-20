@@ -78,7 +78,7 @@ test("contacts page exposes active navigation and responsive layout", () => {
   const css = read("assets/css/prototype.css");
 
   assert.match(html, /href="\.\/" aria-current="page">Контакты<\/a>/);
-  assert.match(html, /prototype\.css\?v=20260820-1/);
+  assert.match(html, /prototype\.css\?v=20260820-2/);
   assert.match(css, /\.contacts-layout\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1\.65fr\) minmax\(320px, 0\.75fr\)/s);
   assert.match(css, /\.contacts-map\s*\{[^}]*min-height:\s*500px/s);
   assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*\.contacts-layout\s*\{[^}]*grid-template-columns:\s*1fr/s);

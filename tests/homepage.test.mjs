@@ -19,7 +19,7 @@ test("homepage contains only the approved header, hero, and feature content", ()
 
   assert.match(html, /fonts\.googleapis\.com\/css2\?family=Montserrat/);
   assert.match(html, /src="assets\/images\/emcom-logo\.png"/);
-  assert.match(html, /src="assets\/js\/header\.js\?v=20260820-1"/);
+  assert.match(html, /src="assets\/js\/header\.js\?v=20260820-2"/);
   assert.match(html, /data-about-toggle/);
   assert.match(html, /data-about-menu/);
 
