@@ -144,8 +144,11 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 0 18px;
+  border: 0;
   background: #343434;
   color: #ffffff;
+  cursor: pointer;
+  font: inherit;
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
@@ -1920,6 +1923,178 @@ a.knowledge-card:hover .knowledge-card-title {
 
 .team-profile-copy p + p {
   margin-top: 22px;
+}
+
+.contact-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  padding: 20px;
+  place-items: center;
+}
+
+.contact-modal[hidden] {
+  display: none;
+}
+
+.contact-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 24, 34, 0.58);
+}
+
+.contact-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(580px, 100%);
+  max-height: calc(100vh - 40px);
+  padding: 44px 50px 50px;
+  overflow-y: auto;
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.contact-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #777777;
+  cursor: pointer;
+  font: 400 30px/1 "Montserrat", Arial, sans-serif;
+}
+
+.contact-modal__panel h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.contact-modal__form {
+  display: grid;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.contact-modal__field {
+  display: grid;
+  color: var(--color-muted);
+  font-size: 13px;
+  grid-template-columns: auto 1fr;
+  gap: 4px;
+}
+
+.contact-modal__field input,
+.contact-modal__field textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  background: #f8f8f8;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 14px;
+  grid-column: 1 / -1;
+}
+
+.contact-modal__field input {
+  min-height: 48px;
+}
+
+.contact-modal__field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-modal__required {
+  color: #d65244;
+}
+
+.contact-modal__upload {
+  position: relative;
+  display: grid;
+  padding: 18px;
+  border: 1px dashed var(--color-border);
+  cursor: pointer;
+  gap: 6px;
+}
+
+.contact-modal__upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.contact-modal__upload strong {
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.contact-modal__upload small,
+.contact-modal__file-name {
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.contact-modal__consent {
+  display: grid;
+  align-items: start;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+}
+
+.contact-modal__consent input {
+  margin-top: 3px;
+}
+
+.contact-modal__submit {
+  min-height: 50px;
+  border: 0;
+  background: #365edc;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.contact-modal__success {
+  padding: 70px 0;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.has-contact-modal {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .contact-modal {
+    padding: 0;
+    place-items: stretch;
+  }
+
+  .contact-modal__panel {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    padding: 56px 20px 30px;
+    border-radius: 0;
+  }
+
+  .contact-modal__submit {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1100px) {

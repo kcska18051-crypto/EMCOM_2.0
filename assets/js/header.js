@@ -9,6 +9,145 @@ export function setMobileMenuState(button, menu, expanded) {
   menu.classList.toggle("is-open", expanded);
 }
 
+export function getContactModalMarkup() {
+  return `<div class="contact-modal" data-contact-modal aria-hidden="true" hidden>
+    <div class="contact-modal__backdrop" data-contact-modal-close></div>
+    <section class="contact-modal__panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" data-contact-modal-panel>
+      <button class="contact-modal__close" type="button" aria-label="Закрыть форму" data-contact-modal-close>×</button>
+      <div data-contact-form-view>
+        <h2 id="contact-modal-title">Написать нам</h2>
+        <form class="contact-modal__form" data-contact-form>
+          <label class="contact-modal__field">Ваше имя <span class="contact-modal__required" aria-hidden="true">*</span><input name="name" type="text" required autocomplete="name"></label>
+          <label class="contact-modal__field">Телефон <span class="contact-modal__required" aria-hidden="true">*</span><input name="phone" type="tel" required autocomplete="tel"></label>
+          <label class="contact-modal__field">Организация <span class="contact-modal__required" aria-hidden="true">*</span><input name="organization" type="text" required autocomplete="organization"></label>
+          <label class="contact-modal__field">Электронная почта <span class="contact-modal__required" aria-hidden="true">*</span><input name="email" type="email" required autocomplete="email"></label>
+          <label class="contact-modal__field">Описание проекта <span class="contact-modal__required" aria-hidden="true">*</span><textarea name="description" required rows="5"></textarea></label>
+          <label class="contact-modal__upload">
+            <input type="file" data-contact-file>
+            <strong>Прикрепить файл</strong>
+            <small>ТЗ, спецификацию, чертёж, опросный лист или другие материалы</small>
+            <span class="contact-modal__file-name" data-contact-file-name>Файл не выбран</span>
+          </label>
+          <label class="contact-modal__consent"><input type="checkbox" required data-contact-consent><span>Согласие на условия обработки персональных данных</span></label>
+          <button class="contact-modal__submit" type="submit">Отправить</button>
+        </form>
+      </div>
+      <div class="contact-modal__success" role="status" data-contact-success hidden>
+        <p>Спасибо! Заявка отправлена. Специалист ЭМКОМ свяжется с вами в течение рабочего дня.</p>
+      </div>
+    </section>
+  </div>`;
+}
+
+export function setContactModalState(modal, expanded, opener) {
+  modal.hidden = !expanded;
+  modal.classList.toggle("is-open", expanded);
+  modal.setAttribute("aria-hidden", String(!expanded));
+  modal.ownerDocument?.body?.classList.toggle("has-contact-modal", expanded);
+
+  if (expanded && opener) {
+    modal._contactOpener = opener;
+  }
+}
+
+export function showContactSuccess(modal) {
+  modal.querySelector("[data-contact-form-view]").hidden = true;
+  modal.querySelector("[data-contact-success]").hidden = false;
+}
+
+function resetContactModal(modal) {
+  const form = modal.querySelector("[data-contact-form]");
+  const formView = modal.querySelector("[data-contact-form-view]");
+  const success = modal.querySelector("[data-contact-success]");
+  const fileName = modal.querySelector("[data-contact-file-name]");
+
+  form.reset();
+  formView.hidden = false;
+  success.hidden = true;
+  fileName.textContent = "Файл не выбран";
+  modal._contactSubmitted = false;
+}
+
+function setupContactModal() {
+  const openers = [...document.querySelectorAll("[data-contact-modal-open]")];
+
+  if (!openers.length) {
+    return;
+  }
+
+  const template = document.createElement("template");
+  template.innerHTML = getContactModalMarkup().trim();
+  const modal = template.content.firstElementChild;
+  document.body.append(modal);
+
+  const form = modal.querySelector("[data-contact-form]");
+  const firstField = form.elements.name;
+  const fileInput = modal.querySelector("[data-contact-file]");
+  const fileName = modal.querySelector("[data-contact-file-name]");
+
+  const closeModal = () => {
+    if (modal.hidden) {
+      return;
+    }
+
+    const opener = modal._contactOpener;
+    setContactModalState(modal, false);
+
+    if (modal._contactSubmitted) {
+      resetContactModal(modal);
+    }
+
+    opener?.focus();
+  };
+
+  const openModal = (opener) => {
+    setContactModalState(modal, true, opener);
+    window.requestAnimationFrame(() => firstField.focus());
+  };
+
+  for (const opener of openers) {
+    opener.addEventListener("click", () => {
+      const mobileButton = document.querySelector("[data-mobile-menu-toggle]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+
+      if (mobileButton && mobileMenu) {
+        setMobileMenuState(mobileButton, mobileMenu, false);
+      }
+
+      openModal(opener);
+    });
+  }
+
+  modal.addEventListener("click", (event) => {
+    if (event.target.closest("[data-contact-modal-close]")) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) {
+      closeModal();
+    }
+  });
+
+  fileInput.addEventListener("change", () => {
+    fileName.textContent = fileInput.files?.[0]?.name || "Файл не выбран";
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    showContactSuccess(modal);
+    modal._contactSubmitted = true;
+    modal.querySelector("[data-contact-success]").focus?.();
+  });
+}
+
 function setupAboutMenu() {
   const button = document.querySelector("[data-about-toggle]");
   const menu = document.querySelector("[data-about-menu]");
@@ -86,4 +225,5 @@ function setupMobileMenu() {
 if (typeof document !== "undefined") {
   setupAboutMenu();
   setupMobileMenu();
+  setupContactModal();
 }

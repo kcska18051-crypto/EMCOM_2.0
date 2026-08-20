@@ -19,7 +19,7 @@ test("homepage contains only the approved header, hero, and feature content", ()
 
   assert.match(html, /fonts\.googleapis\.com\/css2\?family=Montserrat/);
   assert.match(html, /src="assets\/images\/emcom-logo\.png"/);
-  assert.match(html, /src="assets\/js\/header\.js\?v=20260814-3"/);
+  assert.match(html, /src="assets\/js\/header\.js\?v=20260820-1"/);
   assert.match(html, /data-about-toggle/);
   assert.match(html, /data-about-menu/);
 
@@ -91,7 +91,7 @@ test("approved single-row desktop header and mobile navigation are present", () 
   assert.match(html, /<div class="header-bar">/);
   assert.match(html, /class="mobile-menu-toggle"[^>]*aria-controls="main-nav"[^>]*data-mobile-menu-toggle/);
   assert.match(html, /<nav class="site-nav" id="main-nav"[^>]*data-mobile-menu/);
-  assert.match(html, /class="nav-cta" href="#feedback-title">Форма обратной связи<\/a>/);
+  assert.match(html, /<button class="nav-cta" type="button" data-contact-modal-open>Написать нам<\/button>/);
   assertInOrder(html, [
     "О компании",
     "Решения",
@@ -100,7 +100,7 @@ test("approved single-row desktop header and mobile navigation are present", () 
     "Производство",
     "База знаний",
     "Контакты",
-    "Форма обратной связи",
+    "Написать нам",
   ]);
   assert.match(css, /\.header-bar\s*\{[^}]*display:\s*flex/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.mobile-menu-toggle\s*\{[^}]*display:\s*flex/s);

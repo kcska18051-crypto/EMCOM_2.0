@@ -54,7 +54,7 @@ test("partner cards and subsection navigation follow responsive rules", () => {
   const html = read("company/partners/index.html");
   const css = read("assets/css/prototype.css");
 
-  assert.match(html, /href="\.\.\/\.\.\/assets\/css\/prototype\.css\?v=20260817-12"/);
+  assert.match(html, /href="\.\.\/\.\.\/assets\/css\/prototype\.css\?v=20260820-1"/);
   assert.match(css, /\.company-mobile-nav\s*\{[^}]*display:\s*none/s);
   assert.match(css, /\.partner-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.company-mobile-nav\s*\{[^}]*display:\s*flex/s);
