@@ -39,6 +39,33 @@ export function getContactModalMarkup() {
   </div>`;
 }
 
+export function getApplicationModalMarkup() {
+  return `<div class="contact-modal application-modal" data-application-modal aria-hidden="true" hidden>
+    <div class="contact-modal__backdrop" data-contact-modal-close></div>
+    <section class="contact-modal__panel" role="dialog" aria-modal="true" aria-labelledby="application-modal-title" data-application-modal-panel>
+      <button class="contact-modal__close" type="button" aria-label="Закрыть форму" data-contact-modal-close>×</button>
+      <div data-contact-form-view>
+        <h2 id="application-modal-title">Оставить заявку</h2>
+        <form class="contact-modal__form" data-contact-form>
+          <label class="contact-modal__field">Ваше имя <span class="contact-modal__required" aria-hidden="true">*</span><input name="application-name" type="text" required autocomplete="name"></label>
+          <label class="contact-modal__field">Телефон <span class="contact-modal__required" aria-hidden="true">*</span><input name="application-phone" type="tel" required autocomplete="tel"></label>
+          <label class="contact-modal__field">Комментарий<textarea name="application-comment" rows="5"></textarea></label>
+          <label class="contact-modal__upload">
+            <input type="file" data-application-file>
+            <strong>Прикрепить файл</strong>
+            <span class="contact-modal__file-name" data-contact-file-name>Файл не выбран</span>
+          </label>
+          <label class="contact-modal__consent"><input type="checkbox" required data-application-consent><span>Согласие на условия обработки персональных данных</span></label>
+          <button class="contact-modal__submit" type="submit">Отправить</button>
+        </form>
+      </div>
+      <div class="contact-modal__success" role="status" data-contact-success hidden>
+        <p>Спасибо! Заявка отправлена. Специалист ЭМКОМ свяжется с вами в течение рабочего дня.</p>
+      </div>
+    </section>
+  </div>`;
+}
+
 export function setContactModalState(modal, expanded, opener) {
   modal.hidden = !expanded;
   modal.classList.toggle("is-open", expanded);
@@ -68,21 +95,21 @@ function resetContactModal(modal) {
   modal._contactSubmitted = false;
 }
 
-function setupContactModal() {
-  const openers = [...document.querySelectorAll("[data-contact-modal-open]")];
+function setupPrototypeFormModal({ openerSelector, markup, firstFieldName, fileSelector, beforeOpen = () => {} }) {
+  const openers = [...document.querySelectorAll(openerSelector)];
 
   if (!openers.length) {
     return;
   }
 
   const template = document.createElement("template");
-  template.innerHTML = getContactModalMarkup().trim();
+  template.innerHTML = markup.trim();
   const modal = template.content.firstElementChild;
   document.body.append(modal);
 
   const form = modal.querySelector("[data-contact-form]");
-  const firstField = form.elements.name;
-  const fileInput = modal.querySelector("[data-contact-file]");
+  const firstField = form.elements[firstFieldName];
+  const fileInput = modal.querySelector(fileSelector);
   const fileName = modal.querySelector("[data-contact-file-name]");
 
   const closeModal = () => {
@@ -107,13 +134,7 @@ function setupContactModal() {
 
   for (const opener of openers) {
     opener.addEventListener("click", () => {
-      const mobileButton = document.querySelector("[data-mobile-menu-toggle]");
-      const mobileMenu = document.querySelector("[data-mobile-menu]");
-
-      if (mobileButton && mobileMenu) {
-        setMobileMenuState(mobileButton, mobileMenu, false);
-      }
-
+      beforeOpen();
       openModal(opener);
     });
   }
@@ -145,6 +166,32 @@ function setupContactModal() {
     showContactSuccess(modal);
     modal._contactSubmitted = true;
     modal.querySelector("[data-contact-success]").focus?.();
+  });
+}
+
+function setupContactModal() {
+  setupPrototypeFormModal({
+    openerSelector: "[data-contact-modal-open]",
+    markup: getContactModalMarkup(),
+    firstFieldName: "name",
+    fileSelector: "[data-contact-file]",
+    beforeOpen: () => {
+      const mobileButton = document.querySelector("[data-mobile-menu-toggle]");
+      const mobileMenu = document.querySelector("[data-mobile-menu]");
+
+      if (mobileButton && mobileMenu) {
+        setMobileMenuState(mobileButton, mobileMenu, false);
+      }
+    },
+  });
+}
+
+function setupApplicationModal() {
+  setupPrototypeFormModal({
+    openerSelector: "[data-application-modal-open]",
+    markup: getApplicationModalMarkup(),
+    firstFieldName: "application-name",
+    fileSelector: "[data-application-file]",
   });
 }
 
@@ -226,4 +273,5 @@ if (typeof document !== "undefined") {
   setupAboutMenu();
   setupMobileMenu();
   setupContactModal();
+  setupApplicationModal();
 }
