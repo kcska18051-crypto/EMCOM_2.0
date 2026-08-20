@@ -129,3 +129,12 @@ test("success helper switches from the form to the confirmation", async () => {
   assert.equal(formView.hidden, true);
   assert.equal(success.hidden, false);
 });
+
+test("contact modal has centered desktop and full-screen mobile styling", () => {
+  const css = read("assets/css/prototype.css");
+
+  assert.match(css, /\.contact-modal\s*\{[^}]*position:\s*fixed[^}]*place-items:\s*center/s);
+  assert.match(css, /\.contact-modal__panel\s*\{[^}]*width:\s*min\(580px,\s*100%\)[^}]*overflow-y:\s*auto/s);
+  assert.match(css, /@media \(max-width:\s*600px\)[\s\S]*\.contact-modal__panel\s*\{[^}]*min-height:\s*100vh/s);
+  assert.match(css, /\.has-contact-modal\s*\{[^}]*overflow:\s*hidden/s);
+});
