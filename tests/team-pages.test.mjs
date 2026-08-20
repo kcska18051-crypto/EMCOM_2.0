@@ -80,3 +80,58 @@ test("all completed company pages expose the team subsection", () => {
     assert.ok((html.match(/>Команда<\/a>/g) ?? []).length >= 3, `${path} must expose team in header, mobile, and sidebar navigation`);
   }
 });
+
+test("company navigation places team immediately after company", () => {
+  const expected = [
+    "О компании",
+    "Команда",
+    "История компании",
+    "Партнёры",
+    "Сертификаты/лицензии",
+    "Реквизиты"
+  ];
+  const expectedMobile = expected.slice(0, -1);
+  const completedPages = [
+    "index.html",
+    "company/index.html",
+    "company/history/index.html",
+    "company/partners/index.html",
+    "company/licenses/index.html",
+    "company/staff/index.html",
+    "company/staff/sotrudnik/index.html",
+    "solutions/index.html",
+    "solutions/avtonomnoe-i-rezervnoe-elektrosnabzhenie/index.html",
+    "solutions/avtonomnoe-i-rezervnoe-elektrosnabzhenie/dizelnye-elektrostantsii/index.html",
+    "services/index.html",
+    "services/predproektnoe-obsledovanie/index.html",
+    "cases/index.html",
+    "cases/proekt-1/index.html",
+    "production/index.html",
+    "knowledge/index.html",
+    "knowledge/statya-1/index.html",
+    "contacts/index.html"
+  ];
+  const companyPages = [
+    "company/index.html",
+    "company/history/index.html",
+    "company/partners/index.html",
+    "company/licenses/index.html",
+    "company/staff/index.html",
+    "company/staff/sotrudnik/index.html"
+  ];
+  const labels = (fragment) => [...fragment.matchAll(/<(?:a|span)\b[^>]*>([^<]+)<\/(?:a|span)>/g)]
+    .map((match) => match[1].trim());
+
+  for (const path of completedPages) {
+    const menu = read(path).match(/<ul class="about-menu"[\s\S]*?<\/ul>/)?.[0] ?? "";
+    assert.deepEqual(labels(menu), expected, `${path} header order`);
+  }
+
+  for (const path of companyPages) {
+    const html = read(path);
+    const subnav = html.match(/<nav class="company-mobile-nav"[\s\S]*?<\/nav>/)?.[0] ?? "";
+    const sidebar = html.match(/<aside class="company-sidebar"[\s\S]*?<\/aside>/)?.[0] ?? "";
+    assert.deepEqual(labels(subnav), expectedMobile, `${path} mobile subsection order`);
+    assert.deepEqual(labels(sidebar), expected, `${path} sidebar order`);
+  }
+});

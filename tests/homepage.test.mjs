@@ -35,10 +35,10 @@ test("homepage contains only the approved header, hero, and feature content", ()
 
   assertInOrder(html, [
     "О компании",
+    "Команда",
     "История компании",
     "Партнёры",
     "Сертификаты/лицензии",
-    "Команда",
     "Реквизиты",
   ]);
 
