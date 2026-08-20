@@ -40,7 +40,7 @@ test("production page exposes the approved responsive full-width article", () =>
   assert.match(html, /class="service-detail-page production-page"/);
   assert.match(html, /class="production-content-layout"/);
   assert.match(html, /class="service-detail-content"/);
-  assert.match(html, /prototype\.css\?v=20260817-12/);
+  assert.match(html, /prototype\.css\?v=20260820-1/);
   assert.match(css, /\.production-content-layout\s*\{[^}]*width:\s*min\(calc\(100% - 80px\), 1370px\)/s);
   assert.match(css, /\.production-inline-image\s*\{[^}]*aspect-ratio:\s*16 \/ 6/s);
   assert.match(css, /\.production-inline-image\.media-placeholder\s*\{[^}]*min-height:\s*0/s);
@@ -72,5 +72,5 @@ test("all completed headers link to production", () => {
 test("production navigation is active only on its page", () => {
   const html = read("production/index.html");
   assert.match(html, /href="\.\/" aria-current="page">Производство<\/a>/);
-  assert.match(html, /<script type="module" src="\.\.\/assets\/js\/header\.js\?v=20260814-3"><\/script>/);
+  assert.match(html, /<script type="module" src="\.\.\/assets\/js\/header\.js\?v=20260820-1"><\/script>/);
 });
