@@ -24,9 +24,9 @@ test("company page reuses the shared responsive shell", () => {
 
   const html = read("company/index.html");
   const css = read("assets/css/prototype.css");
-  assert.match(html, /href="\.\.\/assets\/css\/prototype\.css\?v=20260820-1"/);
+  assert.match(html, /href="\.\.\/assets\/css\/prototype\.css\?v=20260820-2"/);
   assert.match(html, /src="\.\.\/assets\/images\/emcom-logo\.png"/);
-  assert.match(html, /src="\.\.\/assets\/js\/header\.js\?v=20260820-1"/);
+  assert.match(html, /src="\.\.\/assets\/js\/header\.js\?v=20260820-2"/);
   assert.match(css, /\.company-layout\s*\{[^}]*grid-template-columns:\s*280px minmax\(0, 1fr\)/s);
   assert.match(css, /@media \(max-width: 900px\)[\s\S]*\.company-sidebar\s*\{[^}]*display:\s*none/s);
 });
