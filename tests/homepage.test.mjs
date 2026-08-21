@@ -25,9 +25,9 @@ test("homepage contains only the approved header, hero, and feature content", ()
 
   assertInOrder(html, [
     "О компании",
-    "Решения",
+    "Продукты",
     "Услуги",
-    "Кейсы",
+    "Проекты",
     "Производство",
     "База знаний",
     "Контакты",
@@ -94,9 +94,9 @@ test("approved single-row desktop header and mobile navigation are present", () 
   assert.match(html, /<button class="nav-cta" type="button" data-contact-modal-open>Написать нам<\/button>/);
   assertInOrder(html, [
     "О компании",
-    "Решения",
+    "Продукты",
     "Услуги",
-    "Кейсы",
+    "Проекты",
     "Производство",
     "База знаний",
     "Контакты",
@@ -191,7 +191,7 @@ test("approved about-company block follows the services", () => {
   assert.match(html, /Почему выбирают ЭМКОМ\?/);
   assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
   assert.equal((html.match(/data-about-feature(?=[\s>])/g) ?? []).length, 5);
-  assert.equal((html.match(/data-about-feature-icon/g) ?? []).length, 5);
+  assert.doesNotMatch(html, /data-about-feature-icon/);
   assertInOrder(html, [
     "Полный цикл работ",
     "Собственное производство",
@@ -208,7 +208,7 @@ test("approved cases block follows the complete about-company block", () => {
   const casesPosition = html.indexOf('class="cases"');
 
   assert.ok(aboutMediaPosition < casesPosition, "cases must follow the about-company media placeholder");
-  assert.match(html, /<h2 id="cases-title">Кейсы<\/h2>/);
+  assert.match(html, /<h2 id="cases-title">Выполненные проекты<\/h2>/);
   assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
   assert.equal((html.match(/data-case-card(?=[\s>])/g) ?? []).length, 3);
   assertInOrder(html, ["Проект 1", "Проект 2", "Проект 3"]);
