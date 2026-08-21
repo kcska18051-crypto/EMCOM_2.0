@@ -394,28 +394,6 @@ a:focus-visible {
   line-height: 1.65;
 }
 
-.about-company-features {
-  display: grid;
-  margin-top: 34px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 44px;
-}
-
-.about-company-feature {
-  display: flex;
-  margin: 0;
-  padding: 18px 0;
-  border-top: 1px solid var(--color-border);
-  align-items: center;
-}
-
-.about-company-feature p {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
 .about-media {
   width: 100%;
   min-height: 0;
@@ -2893,11 +2871,6 @@ a.knowledge-card:hover .knowledge-card-title {
 
   .about-company-heading h2 {
     font-size: 34px;
-  }
-
-  .about-company-features {
-    margin-top: 26px;
-    grid-template-columns: 1fr;
   }
 
   .about-media {

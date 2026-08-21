@@ -190,16 +190,10 @@ test("approved about-company block follows the services", () => {
   assert.ok(lastServicePosition < aboutPosition, "about-company block must follow services");
   assert.match(html, /Почему выбирают ЭМКОМ\?/);
   assert.match(html, /Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor\. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\. Aenean commodo ligula eget dolor/);
-  assert.equal((html.match(/data-about-feature(?=[\s>])/g) ?? []).length, 5);
+  assert.equal((html.match(/data-about-feature(?=[\s>])/g) ?? []).length, 0);
   assert.doesNotMatch(html, /data-about-feature-icon/);
-  assertInOrder(html, [
-    "Полный цикл работ",
-    "Собственное производство",
-    "Заводская готовность",
-    "Опыт сложных проектов",
-    "Работа в сложных условиях",
-  ]);
-  assert.ok(html.lastIndexOf("data-about-feature") < mediaPosition, "image placeholder must follow about features");
+  assert.doesNotMatch(html, /Полный цикл работ|Заводская готовность|Опыт сложных проектов|Работа в сложных условиях/);
+  assert.ok(html.indexOf('class="about-company-intro"') < mediaPosition, "image placeholder must follow the intro");
 });
 
 test("approved cases block follows the complete about-company block", () => {
