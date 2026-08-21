@@ -14,8 +14,8 @@ test("cases listing and project detail files exist", () => {
 
 test("cases listing contains three approved project cards", () => {
   const html = read(listingPath);
-  assert.match(html, /<title>Кейсы — ЭМКОМ_2\.0<\/title>/);
-  assert.match(html, /<h1>Кейсы<\/h1>/);
+  assert.match(html, /<title>Выполненные проекты — ЭМКОМ_2\.0<\/title>/);
+  assert.match(html, /<h1>Выполненные проекты<\/h1>/);
   assert.equal((html.match(/data-case-list-card/g) ?? []).length, 3);
   assert.equal((html.match(/<a class="cases-page-card" data-case-list-card/g) ?? []).length, 1);
   assert.match(html, /href="\.\/proekt-1\/"[\s\S]*<h2>Проект 1<\/h2>/);
@@ -27,7 +27,7 @@ test("project detail contains only the approved semantic blocks", () => {
   const html = read(detailPath);
   assert.match(html, /<title>Проект 1 — ЭМКОМ_2\.0<\/title>/);
   assert.match(html, /<h1>Проект 1<\/h1>/);
-  assert.match(html, />Кейсы<\/a>[\s\S]*<span>Проект 1<\/span>/);
+  assert.match(html, />Выполненные проекты<\/a>[\s\S]*<span>Проект 1<\/span>/);
   assert.match(html, /data-case-hero/);
   assert.equal((html.match(/data-case-contact-control/g) ?? []).length, 2);
   assert.match(html, /aria-disabled="true">Заказать проект<\/span>/);
@@ -57,10 +57,10 @@ test("all completed headers link to cases", () => {
   ];
   for (const [path, href] of pages) {
     const html = read(path);
-    assert.match(html, new RegExp(`class="nav-link" href="${href.replaceAll("/", "\\/")}">Кейсы<\\/a>`), `${path} has no cases link`);
+    assert.match(html, new RegExp(`class="nav-link" href="${href.replaceAll("/", "\\/")}">Проекты<\\/a>`), `${path} has no cases link`);
   }
-  assert.match(read(listingPath), /class="nav-link" href="\.\/" aria-current="page">Кейсы<\/a>/);
-  assert.match(read(detailPath), /class="nav-link" href="\.\.\/" aria-current="page">Кейсы<\/a>/);
+  assert.match(read(listingPath), /class="nav-link" href="\.\/" aria-current="page">Проекты<\/a>/);
+  assert.match(read(detailPath), /class="nav-link" href="\.\.\/" aria-current="page">Проекты<\/a>/);
 });
 
 test("cases pages expose desktop, intermediate and mobile layouts", () => {

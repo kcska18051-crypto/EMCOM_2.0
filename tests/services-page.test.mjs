@@ -20,8 +20,8 @@ test("solutions page contains approved sidebar and cards", () => {
   assert.ok(existsSync(fileUrl("solutions/index.html")), "solutions/index.html is missing");
 
   const html = read("solutions/index.html");
-  assert.match(html, /<h1[^>]*>Решения<\/h1>/);
-  assert.match(html, /<span>Решения<\/span>/);
+  assert.match(html, /<h1[^>]*>Продукты<\/h1>/);
+  assert.match(html, /<span>Продукты<\/span>/);
   assert.equal((html.match(/data-services-side-item/g) ?? []).length, 8);
   assert.equal((html.match(/data-solution-card/g) ?? []).length, 8);
   for (const name of services) {
@@ -42,7 +42,7 @@ test("all completed headers link to solutions", () => {
   ];
 
   for (const path of pages) {
-    assert.match(read(path), /class="nav-link" href="(?:\.\.\/)*solutions\/">Решения<\/a>/, `${path} has no solutions link`);
+    assert.match(read(path), /class="nav-link" href="(?:\.\.\/)*solutions\/">Продукты<\/a>/, `${path} has no solutions link`);
   }
 });
 

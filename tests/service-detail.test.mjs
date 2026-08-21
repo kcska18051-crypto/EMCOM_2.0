@@ -23,7 +23,8 @@ test("service detail contains only approved semantic sections", () => {
   assert.equal((html.match(/data-comparison-row/g) ?? []).length, 3);
   assert.match(html, /<h2>Дополнительно<\/h2>/);
   assert.match(html, /Lorem ipsum dolor sit amet/);
-  assert.doesNotMatch(html, />\s*(Видео|Отзывы|Новости|Фотогалерея|Проекты|Статьи|Документы|Сотрудники|Вопрос\/ответ|Товары|Оставьте заявку)\s*</);
+  assert.doesNotMatch(html, />\s*(Видео|Отзывы|Новости|Фотогалерея|Статьи|Документы|Сотрудники|Вопрос\/ответ|Товары|Оставьте заявку)\s*</);
+  assert.doesNotMatch(html, /<h2[^>]*>Проекты<\/h2>/);
 });
 
 test("service detail has approved responsive rules", () => {

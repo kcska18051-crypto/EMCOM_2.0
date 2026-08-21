@@ -17,18 +17,18 @@ test("solutions hierarchy files exist", () => {
 
 test("solutions listing is the renamed eight-card first level", () => {
   const html = read(listingPath);
-  assert.match(html, /<title>Решения — ЭМКОМ_2\.0<\/title>/);
-  assert.match(html, /<h1>Решения<\/h1>/);
-  assert.match(html, /<span>Решения<\/span>/);
+  assert.match(html, /<title>Продукты — ЭМКОМ_2\.0<\/title>/);
+  assert.match(html, /<h1>Продукты<\/h1>/);
+  assert.match(html, /<span>Продукты<\/span>/);
   assert.equal((html.match(/data-solution-card/g) ?? []).length, 8);
   assert.match(html, /<a class="services-page-card" data-solution-card href="\.\/avtonomnoe-i-rezervnoe-elektrosnabzhenie\/">[\s\S]*Автономное и резервное электроснабжение[\s\S]*<\/a>/);
-  assert.match(html, /class="nav-link" href="\.\/" aria-current="page">Решения<\/a>/);
+  assert.match(html, /class="nav-link" href="\.\/" aria-current="page">Продукты<\/a>/);
 });
 
 test("autonomous power page is the three-card second level", () => {
   const html = read(groupPath);
   assert.match(html, /<h1>Автономное и резервное электроснабжение<\/h1>/);
-  assert.match(html, /<a href="\.\.\/">Решения<\/a>/);
+  assert.match(html, /<a href="\.\.\/">Продукты<\/a>/);
   assert.equal((html.match(/data-solution-child-card/g) ?? []).length, 3);
   for (const title of ["Дизельные электростанции", "Газопоршневые установки", "Газотурбинные установки"]) {
     assert.match(html, new RegExp(`<h2>${title}</h2>`));
@@ -42,12 +42,12 @@ test("diesel page reuses the approved detail content with four breadcrumbs", () 
   const html = read(detailPath);
   assert.match(html, /<title>Дизельные электростанции — ЭМКОМ_2\.0<\/title>/);
   assert.match(html, /<h1>Дизельные электростанции<\/h1>/);
-  assert.match(html, />Решения<\/a>[\s\S]*>Автономное и резервное электроснабжение<\/a>[\s\S]*<span>Дизельные электростанции<\/span>/);
+  assert.match(html, />Продукты<\/a>[\s\S]*>Автономное и резервное электроснабжение<\/a>[\s\S]*<span>Дизельные электростанции<\/span>/);
   assert.match(html, /data-service-detail-description/);
   assert.match(html, /data-service-detail-capabilities/);
   assert.equal((html.match(/data-comparison-row/g) ?? []).length, 3);
   assert.match(html, /<h2>Дополнительно<\/h2>/);
-  assert.match(html, /class="nav-link" href="\.\.\/\.\.\/" aria-current="page">Решения<\/a>/);
+  assert.match(html, /class="nav-link" href="\.\.\/\.\.\/" aria-current="page">Продукты<\/a>/);
 });
 
 test("legacy nested service URL redirects to the solution level", () => {
@@ -65,7 +65,7 @@ test("completed page headers link to solutions and services", () => {
   ];
   for (const [path, solutionsHref, servicesHref] of pages) {
     const html = read(path);
-    assert.match(html, new RegExp(`class="nav-link" href="${solutionsHref.replaceAll("/", "\\/")}">Решения<\\/a>`), `${path} has no solutions link`);
+    assert.match(html, new RegExp(`class="nav-link" href="${solutionsHref.replaceAll("/", "\\/")}">Продукты<\\/a>`), `${path} has no solutions link`);
     assert.match(html, new RegExp(`class="nav-link" href="${servicesHref.replaceAll("/", "\\/")}">Услуги<\\/a>`), `${path} has no services link`);
   }
 });
